@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+
+
 interface IAction
 {
     delegate void  Use();
 }
 
+[System.Serializable]
 public class Item
 {
     //ñÿÇ‚êŒÇ»Ç«
-    string imgFileName;
-    string name;
-    string description;
+    public string imgFileName;
+    public string name;
+    public string description;
     //music SE;
     delegate void use();
+
 
 }
 class canEatItem :Item
@@ -32,12 +37,18 @@ class craftCanEatItem :canEatItem
     // óøóù
     Dictionary<string, int> sozai;
 }
-class ItemDataArray
+public class ItemDataArray
 {
-    Item[]  gameItems;
+    public Item[]  gameItems;
 }
 
-class JsonReaderFromResourcesFolder
+public class JsonReaderFromResourcesFolder
 {
-    delegate ItemDataArray GetItemDataArray();
+    public ItemDataArray GetItemDataArray()
+    {
+        string filePath = "json/item_list";
+        TextAsset file = Resources.Load(filePath) as TextAsset;
+        ItemDataArray items = JsonUtility.FromJson<ItemDataArray>(file.text);
+        return items;
+    }
 }

@@ -1,0 +1,16 @@
+{
+    "gameItems": [
+      {
+        "imgFileName": "english_muffin",
+        "name": "ふつうのパン",
+        "description" : "たべたら　元気がでる　パン\nHPが　「５」かいふくする"
+        
+      },
+      {
+        "imgFileName": "food_rice_burger",
+        "name": "めちゃうまのパン",
+        "description" : "たべたら　かなり元気がでる　パン\nHPが　「１５」かいふくする"
+      }
+    ]
+  }
+  
