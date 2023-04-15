@@ -5,7 +5,7 @@ public class Bag
 {
     static int _maxContentsNum = 10;
     Block[] _blockContents = new Block[_maxContentsNum];
-    Dictionary<Item, int> _summaryContents;
+    Dictionary<Item, int> _summaryContents = new Dictionary<Item, int>();
     int _oneBlockMax;
 
     delegate List<Item> getContents();
@@ -16,7 +16,7 @@ public class Bag
         //’†g‚ğ‘‚«‚Ü‚µ‚å‚¤
         return true;
     }
-    void inItem(Item item, int num)
+    public void inItem(Item item, int num)
     {
         if (!canIn()) { return; }
         if (_summaryContents.ContainsKey(item))

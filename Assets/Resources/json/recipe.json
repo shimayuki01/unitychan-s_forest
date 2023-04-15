@@ -1,0 +1,16 @@
+{
+  "gameItems": [
+    {
+        "imgFileName": "food_rice_burger",
+        "name": "カレー",
+        "description" : "拾うことで得られる",
+        "heal_amount":10   
+    },
+    {
+        "imgFileName": "food_rice_burger",
+        "name": "肉じゃが",
+        "description" : "拾うことで得られる",
+        "heal_amount":10
+    }
+  ]
+}

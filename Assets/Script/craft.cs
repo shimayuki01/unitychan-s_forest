@@ -9,7 +9,9 @@ public class craft : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("bagsummary"+player.getBagSummary());
+        Debug.Log("BagSummary"+player.getBagSummary());
+
+
     }
 
     // Update is called once per frame

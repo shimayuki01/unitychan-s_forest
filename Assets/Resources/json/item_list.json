@@ -1,16 +1,16 @@
 {
-    "gameItems": [
-      {
-        "imgFileName": "english_muffin",
-        "name": "ふつうのパン",
-        "description" : "たべたら　元気がでる　パン\nHPが　「５」かいふくする"
-        
-      },
-      {
-        "imgFileName": "food_rice_burger",
-        "name": "めちゃうまのパン",
-        "description" : "たべたら　かなり元気がでる　パン\nHPが　「１５」かいふくする"
-      }
-    ]
-  }
+  "gameItems": [
+    {
+      "imgFileName": "english_muffin",
+      "name": "木材",
+      "description" : "木を切ることで得られる"
+      
+    },
+    {
+      "imgFileName": "food_rice_burger",
+      "name": "石",
+      "description" : "拾うことで得られる"
+    }
+  ]
+}
   
