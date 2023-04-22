@@ -29,7 +29,7 @@ public class InputKey : MonoBehaviour
             {
                 _key = SearchKey();
                 _isKeyDown.OnNext(_key);
-                Debug.Log(_key.ToString() + "‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½B");
+                //Debug.Log(_key.ToString() + "‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½B");
 
             });
 

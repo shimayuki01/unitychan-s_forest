@@ -27,7 +27,7 @@ public class Item :IAction
 
 //============à»â∫ÉAÉCÉeÉÄ==================
 [System.Serializable]
-public class canEatItem
+public class EatItem
 {
     //ñÿÇ‚êŒÇ»Ç«
     public string imgFileName;
@@ -38,17 +38,24 @@ public class canEatItem
 
 }
 [System.Serializable]
-public class craftItem :Item
+public class CraftItem :Item
 {
 // ïÄÇ»Ç«
-    Dictionary<string, int> sozai;
+    public Dictionary<string, int> sozai;
 }
 
 [System.Serializable]
-public class craftCanEatItem : canEatItem
+public class CookItem : EatItem
 {
     // óøóù
-    Dictionary<string, int> sozai;
+    public Sozai[] sozai;
+}
+
+[System.Serializable]
+public class Sozai
+{
+    public string name;
+    public int num;
 }
 
 
@@ -57,17 +64,17 @@ public class ItemDataArray
 {
     public Item[]  gameItems;
 }
-public class canEatItemDataArray
+public class EatItemDataArray
 {
-    public canEatItem[] gameItems;
+    public EatItem[] gameItems;
 }
-public class craftDataArray
+public class CraftDataArray
 {
-    public craftItem[]  gameItems;
+    public CraftItem[]  gameItems;
 }
-public class craftCanEatItemDataArray
+public class CookItemDataArray
 {
-    public craftCanEatItem[] gameItems;
+    public CookItem[] gameItems;
 }
 
 
@@ -84,11 +91,19 @@ public class JsonReaderFromResourcesFolder
     }
 
 
-    public canEatItemDataArray GetRecipe()
+    //public EatItemDataArray GetRecipe()
+    //{
+    //    string filePath = "json/recipe";
+    //    TextAsset file = Resources.Load(filePath) as TextAsset;
+    //    EatItemDataArray items = JsonUtility.FromJson<EatItemDataArray>(file.text);
+    //    return items;
+    //}
+
+    public CookItemDataArray GetRecipe()
     {
         string filePath = "json/recipe";
         TextAsset file = Resources.Load(filePath) as TextAsset;
-        canEatItemDataArray items = JsonUtility.FromJson<canEatItemDataArray>(file.text);
+        CookItemDataArray items = JsonUtility.FromJson<CookItemDataArray>(file.text);
         return items;
     }
 

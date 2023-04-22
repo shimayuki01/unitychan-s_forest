@@ -4,13 +4,15 @@
         "imgFileName": "food_rice_burger",
         "name": "カレー",
         "description" : "拾うことで得られる",
-        "heal_amount":10   
+        "heal_amount":10,   
+        "sozai":[{"name":"ジャガイモ","num":2},{"name":"ニンジン","num":1}]
     },
     {
         "imgFileName": "food_rice_burger",
         "name": "肉じゃが",
         "description" : "拾うことで得られる",
-        "heal_amount":10
+        "heal_amount":10,
+        "sozai":[{"ジャガイモ":1,"ニンジン":2,"豚肉":3}]
     }
   ]
 }
