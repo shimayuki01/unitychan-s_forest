@@ -17,9 +17,15 @@ public class craft : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void Cook(CookItem cook_item, Bag player_bag)
     {
+        //レシピの情報をひぱってくる
+        //CookItem recipe_data = gameData.getRecipe(recipe_name);
+
+        //バッグに素材が入っているかの確認
+        foreach(Sozai need_sozai in cook_item.sozai) { 
+
+        }
         
     }
 }

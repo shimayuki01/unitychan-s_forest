@@ -16,6 +16,8 @@ public class Bag
         //中身を書きましょう
         return true;
     }
+
+    //バッグの中に物を入れる（ものを拾う）
     public void inItem(Item item, int num)
     {
         if (!canIn()) { return; }
@@ -29,7 +31,23 @@ public class Bag
         }
     }
     delegate Block outItem();
-    delegate bool haveItem();
+    public bool haveItem(int item_id)
+    {
+        //中身を描く
+        return true;
+    }
+    int getItemQuantity(int item_id)
+    {
+
+        if (!haveItem(item_id)) {return 0;}
+
+        return 1;
+
+
+    }
+
+
+    //ブロック（バッグの中身の形）に変換する
     void summaryToBlock()
     {
         int num = 0;

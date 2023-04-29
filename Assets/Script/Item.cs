@@ -15,8 +15,7 @@ public class Item :IAction
     public string imgFileName;
     public string name;
     public string description;
-    //music SE;
-    int heal_amount;
+    public int id;
 
 
     delegate void Use();
@@ -27,14 +26,11 @@ public class Item :IAction
 
 //============以下アイテム==================
 [System.Serializable]
-public class EatItem
+public class EatItem : Item
 {
-    //木や石など
-    public string imgFileName;
-    public string name;
-    public string description;
     //リンゴや木の実
-
+    //music SE;
+    int heal_amount;
 
 }
 [System.Serializable]
@@ -57,6 +53,21 @@ public class Sozai
     public string name;
     public int num;
 }
+
+[System.Serializable]
+public class needSozai
+{
+    public Item item;
+    public int num;
+}
+
+//カレー　じゃが１人参２
+/*
+ * json
+ * 名前
+ * 素材の名前はかけない
+ * 素材の数は書きたい
+ */
 
 
 //============以下アイテムArray==================

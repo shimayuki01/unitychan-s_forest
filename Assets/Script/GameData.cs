@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-    ItemDataArray itemDataArray;
+    Item[] itemDataArray;
     CookItem[] cookItemDataArray;
     Dictionary<string, int> recipe2index;
+    Dictionary<int, Item> id2Item;
 
     // Start is called before the first frame update
     void Start()
     {
-        itemDataArray = new JsonReaderFromResourcesFolder().GetItemDataArray();
-
+        //jsonからデータの読み込み
+        itemDataArray = new JsonReaderFromResourcesFolder().GetItemDataArray().gameItems;
         cookItemDataArray = new JsonReaderFromResourcesFolder().GetRecipe().gameItems;
 
+        //辞書：レシピは配列で管理されてるため、レシピとインデックスを対応させる
         recipe2index = new Dictionary<string, int>();
 
+        foreach (Item item in itemDataArray)
+        {
+            id2Item.Add(item.id, item);
+        }
 
         for (int i=0; i < cookItemDataArray.Length; i++)
         {
             recipe2index.Add(cookItemDataArray[i].name, i);
         }
 
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public CookItem getRecipe(string recipe_name)
     {
@@ -37,5 +39,15 @@ public class GameData : MonoBehaviour
         int index = recipe2index[recipe_name];
 
         return cookItemDataArray[index];
+    }
+
+    public CookItem[] getCookItemDataArray()
+    {
+        return cookItemDataArray;
+    }
+
+    public Item getItemFromId(int item_id)
+    {
+        return id2Item[item_id];
     }
 }
