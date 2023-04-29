@@ -6,6 +6,7 @@
         "description" : "拾うことで得られる",
         "heal_amount":10,   
         "sozai":[{"name":"ジャガイモ","num":2},{"name":"ニンジン","num":1}]
+        "id" : 100
     },
     {
         "imgFileName": "food_rice_burger",
@@ -13,6 +14,7 @@
         "description" : "拾うことで得られる",
         "heal_amount":10,
         "sozai":[{"ジャガイモ":1,"ニンジン":2,"豚肉":3}]
+        "id" : 101
     }
   ]
 }

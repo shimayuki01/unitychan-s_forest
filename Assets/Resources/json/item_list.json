@@ -3,13 +3,15 @@
     {
       "imgFileName": "english_muffin",
       "name": "木材",
-      "description" : "木を切ることで得られる"
+      "description" : "木を切ることで得られる",
+      "id" : 0
       
     },
     {
       "imgFileName": "food_rice_burger",
       "name": "石",
-      "description" : "拾うことで得られる"
+      "description" : "拾うことで得られる",
+      "id" : 1
     }
   ]
 }
