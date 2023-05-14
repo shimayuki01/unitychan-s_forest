@@ -20,5 +20,7 @@ public class Player : MonoBehaviour
 
     public int getPlayerOnoAtk() { return playerOno.getAtk(); }
 
+    public Bag getPlayerBag() { return playerBag; }
+
     public Dictionary<Item, int> getBagSummary(){ return this.playerBag.getSummary();  }
 }

@@ -7,7 +7,7 @@ public class GameData : MonoBehaviour
     Item[] itemDataArray;
     CookItem[] cookItemDataArray;
     Dictionary<string, int> recipe2index;
-    Dictionary<int, Item> id2Item;
+    Dictionary<string, Item> id2Item;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +15,9 @@ public class GameData : MonoBehaviour
         //jsonからデータの読み込み
         itemDataArray = new JsonReaderFromResourcesFolder().GetItemDataArray().gameItems;
         cookItemDataArray = new JsonReaderFromResourcesFolder().GetRecipe().gameItems;
-
         //辞書：レシピは配列で管理されてるため、レシピとインデックスを対応させる
         recipe2index = new Dictionary<string, int>();
+        id2Item = new Dictionary<string, Item>();
 
         foreach (Item item in itemDataArray)
         {
@@ -46,7 +46,7 @@ public class GameData : MonoBehaviour
         return cookItemDataArray;
     }
 
-    public Item getItemFromId(int item_id)
+    public Item getItemFromId(string item_id)
     {
         return id2Item[item_id];
     }

@@ -30,13 +30,28 @@ public class Bag
             _summaryContents.Add(item, num);
         }
     }
+    public void deleteItem(Item item, int num)
+    {
+        if (_summaryContents.ContainsKey(item))
+        { 
+            //素材の数がマイナスになるときの処理を書きましょう
+            _summaryContents[item] -= num;
+        }
+        else
+        {
+           //捨てれない場合はエラーを吐きましょう
+        }
+    }
+
+
+
     delegate Block outItem();
-    public bool haveItem(int item_id)
+    public bool haveItem(string item_id)
     {
         //中身を描く
         return true;
     }
-    int getItemQuantity(int item_id)
+    int getItemQuantity(string item_id)
     {
 
         if (!haveItem(item_id)) {return 0;}

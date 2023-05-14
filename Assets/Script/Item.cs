@@ -15,8 +15,8 @@ public class Item :IAction
     public string imgFileName;
     public string name;
     public string description;
-    public int id;
-
+    public string id;
+    public 
 
     delegate void Use();
 
@@ -36,8 +36,8 @@ public class EatItem : Item
 [System.Serializable]
 public class CraftItem :Item
 {
-// 斧など
-    public Dictionary<string, int> sozai;
+    // 斧など
+    public Sozai[] sozai;
 }
 
 [System.Serializable]
@@ -50,25 +50,9 @@ public class CookItem : EatItem
 [System.Serializable]
 public class Sozai
 {
-    public string name;
+    public string id;
     public int num;
 }
-
-[System.Serializable]
-public class needSozai
-{
-    public Item item;
-    public int num;
-}
-
-//カレー　じゃが１人参２
-/*
- * json
- * 名前
- * 素材の名前はかけない
- * 素材の数は書きたい
- */
-
 
 //============以下アイテムArray==================
 public class ItemDataArray

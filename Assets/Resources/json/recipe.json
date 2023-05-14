@@ -5,16 +5,16 @@
         "name": "カレー",
         "description" : "拾うことで得られる",
         "heal_amount":10,   
-        "sozai":[{"name":"ジャガイモ","num":2},{"name":"ニンジン","num":1}]
-        "id" : 100
+        "sozai":[{"id":"#000","num":2},{"id":"#001","num":1}],
+        "id" : "#100"
     },
     {
         "imgFileName": "food_rice_burger",
         "name": "肉じゃが",
         "description" : "拾うことで得られる",
         "heal_amount":10,
-        "sozai":[{"ジャガイモ":1,"ニンジン":2,"豚肉":3}]
-        "id" : 101
+        "sozai":[{"id":"#000", "num":1},{"id":"#001", "num":2}],
+        "id" : "#101"
     }
   ]
 }
