@@ -21,6 +21,7 @@ public class GameData : MonoBehaviour
 
         foreach (Item item in itemDataArray)
         {
+            
             id2Item.Add(item.id, item);
         }
 
