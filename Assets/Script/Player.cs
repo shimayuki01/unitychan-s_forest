@@ -22,5 +22,5 @@ public class Player : MonoBehaviour
 
     public Bag getPlayerBag() { return playerBag; }
 
-    public Dictionary<Item, int> getBagSummary(){ return this.playerBag.getSummary();  }
+    public Dictionary<string, int> getBagSummary(){ return this.playerBag.getSummary();  }
 }

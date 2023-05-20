@@ -5,7 +5,8 @@ public class Bag
 {
     static int _maxContentsNum = 10;
     Block[] _blockContents = new Block[_maxContentsNum];
-    Dictionary<Item, int> _summaryContents = new Dictionary<Item, int>();
+    //_summaryContents<id,数>
+    Dictionary<String, int> _summaryContents = new Dictionary<String, int>();
     int _oneBlockMax;
 
     delegate List<Item> getContents();
@@ -17,56 +18,68 @@ public class Bag
         return true;
     }
 
+    //指定したアイテムの個数がバッグの中身より多ければtrueを返す
+    bool biggerQuantity(String id, int quantity)
+    {
+        if(_summaryContents[id] >= quantity)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //バッグの中に物を入れる（ものを拾う）
-    public void inItem(Item item, int num)
+    public void inItem(String id, int quantity)
     {
         if (!canIn()) { return; }
-        if (_summaryContents.ContainsKey(item))
+
+        if (_summaryContents.ContainsKey(id))
         {
-            _summaryContents[item] += num;
+            _summaryContents[id] += quantity;
         }
         else
         {
-            _summaryContents.Add(item, num);
+            _summaryContents.Add(id, quantity);
         }
     }
-    public void deleteItem(Item item, int num)
+
+
+    //バッグからアイテムを削除する（料理で素材を消費した場合など）
+    //アイテムが削除できなかった場合はfalseを返す。削除出来たらtrue。
+    public bool deleteItem(String id, int quantity)
     {
-        if (_summaryContents.ContainsKey(item))
+        if (_summaryContents.ContainsKey(id))
         { 
-            //素材の数がマイナスになるときの処理を書きましょう
-            _summaryContents[item] -= num;
+            if(biggerQuantity(id,quantity))
+            {
+                _summaryContents[id] -= quantity;
+                return true;
+            }
+
         }
-        else
-        {
-           //捨てれない場合はエラーを吐きましょう
-        }
+        return false;
     }
 
-
-
+    //バッグのアイテムを外に捨てる
     delegate Block outItem();
-    public bool haveItem(string item_id)
+
+
+    public bool haveItem(string id)
     {
         //中身を描く
         return true;
     }
-    int getItemQuantity(string item_id)
-    {
 
-        if (!haveItem(item_id)) {return 0;}
-
-        return 1;
-
-
-    }
 
 
     //ブロック（バッグの中身の形）に変換する
     void summaryToBlock()
     {
         int num = 0;
-        foreach(KeyValuePair<Item, int> it in _summaryContents)
+        foreach(KeyValuePair<String, int> it in _summaryContents)
         {
             int blockNum = it.Value % _oneBlockMax +1;
             for(int i = 1; i < blockNum; i++)
@@ -81,7 +94,15 @@ public class Bag
 
         }
     }
-    public Dictionary<Item, int> getSummary()
+
+    int getItemQuantity(string item_id)
+    {
+
+        if (!haveItem(item_id)) { return 0; }
+
+        return _summaryContents[item_id];
+    }
+    public Dictionary<String, int> getSummary()
     { 
         return _summaryContents;
     }
@@ -89,18 +110,18 @@ public class Bag
 
 public class Block
 {
-    Item _item = new Item();
-    int _num;
+    String _itemId;
+    int _quantity;
     static int _max;
 
-    public Block(Item it, int num) 
+    public Block(String id, int num) 
     {
-        this._item = it;
-        this._num = num;
+        this._itemId = id;
+        this._quantity = num;
     }
 
-    Item getItem() { return this._item; }
-    int getNum() { return this._num; }
+    String getItemId() { return this._itemId; }
+    int getQuantity() { return this._quantity; }
 
     delegate void addNum();
     delegate void subNum();

@@ -6,49 +6,61 @@ public class GameData : MonoBehaviour
 {
     Item[] itemDataArray;
     CookItem[] cookItemDataArray;
-    Dictionary<string, int> recipe2index;
     Dictionary<string, Item> id2Item;
+    Dictionary<string, CookItem> id2CookItem;
+    Dictionary<string, CookItem> recipeName2item;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //jsonからデータの読み込み
+        //レシピ　= [Item 木,Item 石]
         itemDataArray = new JsonReaderFromResourcesFolder().GetItemDataArray().gameItems;
+        //レシピ　= [CookItem カレー,CookItem 肉じゃが]
         cookItemDataArray = new JsonReaderFromResourcesFolder().GetRecipe().gameItems;
-        //辞書：レシピは配列で管理されてるため、レシピとインデックスを対応させる
-        recipe2index = new Dictionary<string, int>();
+
+
+
+        //idとitemの辞書
+
+        //itemの辞書
         id2Item = new Dictionary<string, Item>();
+        //CookItemの辞書
+        recipeName2item = new Dictionary<string, CookItem>();
+        id2CookItem = new Dictionary<string, CookItem>();
 
         foreach (Item item in itemDataArray)
         {
-            
             id2Item.Add(item.id, item);
         }
 
-        for (int i=0; i < cookItemDataArray.Length; i++)
+        foreach (CookItem item in cookItemDataArray)
         {
-            recipe2index.Add(cookItemDataArray[i].name, i);
+            recipeName2item.Add(item.name, item);
         }
-
-
+        foreach (CookItem item in itemDataArray)
+        {
+            id2CookItem.Add(item.id, item);
+        }
     }
 
-
-    public CookItem getRecipe(string recipe_name)
+    public CookItem getItem(string item_id)
     {
-        if (!recipe2index.ContainsKey(recipe_name)) { Debug.Log(recipe_name + "が見つかりません"); return null; }
-        int index = recipe2index[recipe_name];
+        return id2CookItem[item_id];
+    }
+    public CookItem getRecipeFromName(string recipe_name)
+    {
+        return recipeName2item[recipe_name];
+    }
 
-        return cookItemDataArray[index];
+    public CookItem getRecipe(string recipe_id)
+    {
+        return id2CookItem[recipe_id];
     }
 
     public CookItem[] getCookItemDataArray()
     {
         return cookItemDataArray;
-    }
-
-    public Item getItemFromId(string item_id)
-    {
-        return id2Item[item_id];
     }
 }
