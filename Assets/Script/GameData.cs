@@ -12,7 +12,7 @@ public class GameData : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //jsonからデータの読み込み
         //レシピ　= [Item 木,Item 石]
@@ -45,9 +45,14 @@ public class GameData : MonoBehaviour
         }
     }
 
-    public CookItem getItem(string item_id)
+    public Item getItem(string item_id)
     {
-        return id2CookItem[item_id];
+        return id2Item[item_id];
+    }
+
+    public CookItem[] getCookItemList()
+    {
+        return cookItemDataArray;
     }
     public CookItem getRecipeFromName(string recipe_name)
     {
