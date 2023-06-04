@@ -7,24 +7,19 @@ using UnityEngine;
 public class Cook : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Player _player;
     [SerializeField] GameData _gameData;
     CookItem[] _cookItems;
-    List<string> _canCookItems;
+    public List<string> _canCookItems;
+
 
     void Start()
     {
-        Debug.Log("BagSummary" + _player.getBagSummary());
-        _cookItems = _gameData.getCookItemList();
+        _cookItems = _gameData.getCookItemDataArray();
         _canCookItems = new List<string>();
-        //CookItem kare = _gameData.getRecipe("肉じゃが");
-        //Debug.Log("kare-" + kare.name);
-        //Cook(kare, _player.getPlayerBag());
 
     }
-
     //料理可能リストの生成(効率はめちゃくちゃ悪い)
-    void remakeCanCookItemsList(Bag _player_bag)
+    public void remakeCanCookItemsList(Bag _player_bag)
     {
         _canCookItems.Clear();
 
@@ -58,7 +53,7 @@ public class Cook : MonoBehaviour
     }
 
     //バックの材料を消費して料理をバックに追加
-    void doCook(string recipe_id, Bag _player_bag)
+    public void doCook(string recipe_id, Bag _player_bag)
     {
         //レシピの情報をひぱってくる
         CookItem recipe_data = _gameData.getRecipe(recipe_id);

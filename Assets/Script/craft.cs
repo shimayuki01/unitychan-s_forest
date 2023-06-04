@@ -38,6 +38,7 @@ public class craft : MonoBehaviour
 
     }
 
+   
     void Cook(string recipe_id, Bag player_bag)
     {
         //ƒŒƒVƒs‚Ìî•ñ‚ğ‚Ğ‚Ï‚Á‚Ä‚­‚é

@@ -81,7 +81,7 @@ public class InputKey : MonoBehaviour
     {
         foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
         {
-            Debug.Log(code);
+            //Debug.Log(code);
             if (Input.GetKeyDown(code))
             {
                 return code;

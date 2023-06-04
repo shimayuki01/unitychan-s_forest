@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
-{
+public class GameData : MonoBehaviour { 
     Item[] itemDataArray;
     CookItem[] cookItemDataArray;
     Dictionary<string, Item> id2Item;
@@ -39,7 +38,7 @@ public class GameData : MonoBehaviour
         {
             recipeName2item.Add(item.name, item);
         }
-        foreach (CookItem item in itemDataArray)
+        foreach (CookItem item in cookItemDataArray)
         {
             id2CookItem.Add(item.id, item);
         }
@@ -48,11 +47,6 @@ public class GameData : MonoBehaviour
     public Item getItem(string item_id)
     {
         return id2Item[item_id];
-    }
-
-    public CookItem[] getCookItemList()
-    {
-        return cookItemDataArray;
     }
     public CookItem getRecipeFromName(string recipe_name)
     {
