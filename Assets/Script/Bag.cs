@@ -5,20 +5,20 @@ public class Bag
 {
     static int _maxContentsNum = 10;
     Block[] _blockContents = new Block[_maxContentsNum];
-    //_summaryContents<id,”>
+    //_summaryContents<id,ï¿½ï¿½>
     Dictionary<String, int> _summaryContents = new Dictionary<String, int>();
     int _oneBlockMax;
 
     delegate List<Item> getContents();
 
-    //ƒoƒbƒN‚É“ü‚ê‚ç‚ê‚é‚©Šm”F‚·‚éŠÖ”‚Ì’Ç‰Á
+    //ï¿½oï¿½bï¿½Nï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½mï¿½Fï¿½ï¿½ï¿½ï¿½Öï¿½ï¿½Ì’Ç‰ï¿½
     bool canIn()
     {
-        //’†g‚ğ‘‚«‚Ü‚µ‚å‚¤
+        //ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½å‚¤
         return true;
     }
 
-    //w’è‚µ‚½ƒAƒCƒeƒ€‚ÌŒÂ”‚ªƒoƒbƒO‚Ì’†g‚æ‚è‘½‚¯‚ê‚Îtrue‚ğ•Ô‚·
+    //ï¿½wï¿½è‚µï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ÌŒÂï¿½ï¿½ï¿½ï¿½oï¿½bï¿½Oï¿½Ì’ï¿½ï¿½gï¿½ï¿½è‘½ï¿½ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½Ô‚ï¿½
     bool biggerQuantity(String id, int quantity)
     {
         if(_summaryContents[id] >= quantity)
@@ -31,7 +31,7 @@ public class Bag
         }
     }
 
-    //ƒoƒbƒO‚Ì’†‚É•¨‚ğ“ü‚ê‚éi‚à‚Ì‚ğE‚¤j
+    //ï¿½oï¿½bï¿½Oï¿½Ì’ï¿½ï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Ì‚ï¿½ï¿½Eï¿½ï¿½ï¿½j
     public void inItem(String id, int quantity)
     {
         if (!canIn()) { return; }
@@ -47,8 +47,8 @@ public class Bag
     }
 
 
-    //ƒoƒbƒO‚©‚çƒAƒCƒeƒ€‚ğíœ‚·‚éi—¿—‚Å‘fŞ‚ğÁ”ï‚µ‚½ê‡‚È‚Çj
-    //ƒAƒCƒeƒ€‚ªíœ‚Å‚«‚È‚©‚Á‚½ê‡‚Ífalse‚ğ•Ô‚·Bíœo—ˆ‚½‚çtrueB
+    //ï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Å‘fï¿½Ş‚ï¿½ï¿½ï¿½ï¿½ï‚µï¿½ï¿½ï¿½ê‡ï¿½È‚Çj
+    //ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½íœï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ï¿½falseï¿½ï¿½Ô‚ï¿½ï¿½Bï¿½íœï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½trueï¿½B
     public bool deleteItem(String id, int quantity)
     {
         if (_summaryContents.ContainsKey(id))
@@ -63,19 +63,19 @@ public class Bag
         return false;
     }
 
-    //ƒoƒbƒO‚ÌƒAƒCƒeƒ€‚ğŠO‚ÉÌ‚Ä‚é
+    //ï¿½oï¿½bï¿½Oï¿½ÌƒAï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ÉÌ‚Ä‚ï¿½
     delegate Block outItem();
 
 
     public bool haveItem(string id)
     {
-        //’†g‚ğ•`‚­
+        //ï¿½ï¿½ï¿½gï¿½ï¿½`ï¿½ï¿½
         return true;
     }
 
 
 
-    //ƒuƒƒbƒNiƒoƒbƒO‚Ì’†g‚ÌŒ`j‚É•ÏŠ·‚·‚é
+    //ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½iï¿½oï¿½bï¿½Oï¿½Ì’ï¿½ï¿½gï¿½ÌŒ`ï¿½jï¿½É•ÏŠï¿½ï¿½ï¿½ï¿½ï¿½
     void summaryToBlock()
     {
         int num = 0;
@@ -102,7 +102,7 @@ public class Bag
 
         return _summaryContents[item_id];
     }
-    public Dictionary<String, int> getSummary()
+    public Dictionary<String, int> getBagSummary()
     { 
         return _summaryContents;
     }
