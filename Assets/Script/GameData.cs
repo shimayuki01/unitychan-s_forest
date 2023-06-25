@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour { 
+public class GameData : MonoBehaviour , ICookItemSozaiAcquisition
+{ 
     Item[] itemDataArray;
     CookItem[] cookItemDataArray;
     Dictionary<string, Item> id2Item;
     Dictionary<string, CookItem> id2CookItem;
-    Dictionary<string, CookItem> recipeName2item;
+    Dictionary<string, CookItem> cookItemName2item;
 
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class GameData : MonoBehaviour {
         //itemÇÃé´èë
         id2Item = new Dictionary<string, Item>();
         //CookItemÇÃé´èë
-        recipeName2item = new Dictionary<string, CookItem>();
+        cookItemName2item = new Dictionary<string, CookItem>();
         id2CookItem = new Dictionary<string, CookItem>();
 
         foreach (Item item in itemDataArray)
@@ -36,7 +37,7 @@ public class GameData : MonoBehaviour {
 
         foreach (CookItem item in cookItemDataArray)
         {
-            recipeName2item.Add(item.name, item);
+            cookItemName2item.Add(item.name, item);
         }
         foreach (CookItem item in cookItemDataArray)
         {
@@ -48,14 +49,19 @@ public class GameData : MonoBehaviour {
     {
         return id2Item[item_id];
     }
-    public CookItem getRecipeFromName(string recipe_name)
+    public CookItem getRecipeFromName(string cookItem_name)
     {
-        return recipeName2item[recipe_name];
+        return cookItemName2item[cookItem_name];
     }
 
-    public CookItem getRecipe(string recipe_id)
+    public CookItem getRecipe(string cookItem_id)
     {
-        return id2CookItem[recipe_id];
+        return id2CookItem[cookItem_id];
+    }
+
+    public Sozai[] getCookItemSozai(string cookItem_id)
+    {
+        return id2CookItem[cookItem_id].sozai;
     }
 
     public CookItem[] getCookItemDataArray()

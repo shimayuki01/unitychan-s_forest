@@ -4,18 +4,21 @@ using UnityEngine;
 
 
 //料理が
-public class Cook : MonoBehaviour
+public class Cook : MonoBehaviour, IManager
 {
     // Start is called before the first frame update
     [SerializeField] GameData _gameData;
     CookItem[] _cookItems;
     public List<string> _canCookItems;
+    [SerializeField] IItemConsumption _bag;
+    ICookItemSozaiAcquisition _cookItemSozaiAcquisition;
 
 
     void Start()
     {
         _cookItems = _gameData.getCookItemDataArray();
         _canCookItems = new List<string>();
+        _cookItemSozaiAcquisition = new GameData(); 
 
     }
     //料理可能リストの生成(効率はめちゃくちゃ悪い)
@@ -53,20 +56,19 @@ public class Cook : MonoBehaviour
     }
 
     //バックの材料を消費して料理をバックに追加
-    public void doCook(string recipe_id, Bag _player_bag)
+    public void doCook(string cookItem_id)
     {
         //レシピの情報をひぱってくる
-        CookItem recipe_data = _gameData.getRecipe(recipe_id);
+        Sozai[] sozais = _cookItemSozaiAcquisition.getCookItemSozai(cookItem_id);
 
         //バックから素材を引く(個数確認はcanCookで行う)
-        foreach (Sozai need_sozai in recipe_data.sozai)
+        foreach (Sozai need_sozai in sozais)
         {
-            Item item = _gameData.getItem(need_sozai.id);
-            _player_bag.deleteItem(item.id, need_sozai.num);
+            _bag.deleteItem(need_sozai.id, need_sozai.num);
         }
 
         //現状はまとめて調理できないので調理後のcook_itemは一つ
-        _player_bag.inItem(recipe_id, 1);
+        _bag.inItem(cookItem_id, 1);
 
     }
 }

@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-interface IAction
-{
-    delegate void  Use();
-}
+
 
 [System.Serializable]
 public class Item :IAction
