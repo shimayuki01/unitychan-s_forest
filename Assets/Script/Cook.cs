@@ -41,7 +41,7 @@ public class Cook : MonoBehaviour
         //バッグに素材が入っているかの確認
         foreach (Sozai need_sozai in recipe_data.sozai)
         {
-            if (_player_bag.getSummary()[need_sozai.id] < need_sozai.num)
+            if (_player_bag.getBagSummary()[need_sozai.id] < need_sozai.num)
             {
                 Debug.Log("調理できない");
                 return false;

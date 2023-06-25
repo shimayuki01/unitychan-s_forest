@@ -16,7 +16,7 @@ public class BagTest : MonoBehaviour
     public void ShowBag()
     {
         Debug.Log("ーーーーーーーーバッグの中身ーーーーーーーー");
-        foreach (var pare in bag.getSummary())
+        foreach (var pare in bag.getBagSummary())
         {
 
             Debug.Log(pare.Key  + ":" + pare.Value);
