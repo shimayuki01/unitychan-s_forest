@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Bag : IItemConsumption, IBag
+public class Bag : IItemConsumption
 {
     static int _maxContentsNum = 10;
     Block[] _blockContents = new Block[_maxContentsNum];
@@ -19,7 +19,7 @@ public class Bag : IItemConsumption, IBag
     }
 
     //指定したアイテムの個数がバッグの中身より多ければtrueを返す
-    bool biggerQuantity(String id, int quantity)
+    bool biggerQuantity(string id, int quantity)
     {
         if (_summaryContents[id] >= quantity)
         {
@@ -32,7 +32,7 @@ public class Bag : IItemConsumption, IBag
     }
 
     //バッグの中に物を入れる（ものを拾う）
-    public void inItem(String id, int quantity)
+    public void inItem(string id, int quantity)
     {
         if (!canIn()) { return; }
 
@@ -46,20 +46,11 @@ public class Bag : IItemConsumption, IBag
         }
     }
 
-
-    //バッグからアイテムを削除する（料理で素材を消費した場合など）
-    public void deleteItem(string id, int quantity)
+    //バッグのアイテムを減らす
+    public void subItemQuantity(string id, int quantity)
     {
         _summaryContents[id] -= quantity;
     }
-
-    //バッグのアイテムを外に捨てる
-    //バック単体の動きはdeleteItemと同じ
-    public void outItem(string id, int quantity)
-    {
-        _summaryContents[id] -= quantity;
-    }
-
 
     public bool haveItem(string id)
     {

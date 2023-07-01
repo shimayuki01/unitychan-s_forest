@@ -6,21 +6,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Ono playerOno = new Ono(1, 1);
-    Bag playerBag = new Bag();
+    Ono _ono = new Ono(1, 1);
+    GameData gamedata = new GameData();
+    IManager _manager;
 
 
 
     private void Start()
     {
-
+        _manager = new Cook(gamedata);
     }
 
-    public int getPlayerOnoLv(){ return playerOno.getLv();}
+    public int getPlayerOnoLv(){ return _ono.getLv();}
 
-    public int getPlayerOnoAtk() { return playerOno.getAtk(); }
+    public int getPlayerOnoAtk() { return _ono.getAtk(); }
 
-    public Bag getPlayerBag() { return playerBag; }
-
-    public Dictionary<string, int> getBagSummary(){ return this.playerBag.getBagSummary();  }
+    public Dictionary<string, int> getBagSummary(){ return this._bag.getBagSummary();  }
 }
