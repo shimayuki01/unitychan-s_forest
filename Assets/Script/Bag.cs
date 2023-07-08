@@ -12,10 +12,12 @@ public class Bag : IItemConsumption
     delegate List<Item> getContents();
 
     //バックに入れられるか確認する関数の追加
-    bool canIn()
+    bool canIn(string itemId)
     {
-        //中身を書きましょう
-        return true;
+        if (!isMaxBag())//bagがmaxじゃなかったらtrue
+            return true;
+
+        return createInItemArgumentList().Contains(itemId); //bagに入れれるアイテムリストに入っていればtrueを返す
     }
 
     //指定したアイテムの個数がバッグの中身より多ければtrueを返す
@@ -34,7 +36,11 @@ public class Bag : IItemConsumption
     //バッグの中に物を入れる（ものを拾う）
     public void inItem(string id, int quantity)
     {
-        if (!canIn()) { return; }
+        if (!canIn(id)) 
+        {
+            //入れなかったらメッセージを入れる関数の作成
+            return; 
+        }
 
         if (_summaryContents.ContainsKey(id))
         {
@@ -58,24 +64,50 @@ public class Bag : IItemConsumption
         return true;
     }
 
+    public bool isMaxBag()
+    {
+        if (_blockContents[-1] == null) //bagがmaxじゃなければ(_blockContentsに最後まで入っていない)false
+            return false;
+
+        return true; //そうでなければtrue
+    }
+
+    public List<string> createInItemArgumentList()
+    {
+        List<string> InItemArgumentList = new List<string>();
+        foreach(Block block in _blockContents)
+        {
+            if(block.getQuantity() < block.getBLOCK_MAX())
+            {
+                InItemArgumentList.Add(block.getItemId());
+            }
+        }
+
+        return InItemArgumentList;
+    }
 
 
     //ブロック（バッグの中身の形）に変換する
     void summaryToBlock()
     {
-        int num = 0;
+        Array.Clear(_blockContents, 0, _blockContents.Length); //配列の初期化
+                                                               
+        int index = 0;
         foreach (KeyValuePair<String, int> it in _summaryContents)
         {
-            int blockNum = it.Value % _oneBlockMax + 1;
-            for (int i = 1; i < blockNum; i++)
+            int blockNum = it.Value / _oneBlockMax;
+            for (int i = 0; i < blockNum; i++)
             {
-                _blockContents[num] = new Block(it.Key, _oneBlockMax);
-                num++;
+                _blockContents[index] = new Block(it.Key, _oneBlockMax);
+                index++;
             }
 
-            int amari = it.Value - _oneBlockMax * blockNum;
-            _blockContents[num] = new Block(it.Key, amari);
-            num++;
+            //余りが存在するなら余りの分を追加で入れる
+            if (it.Value % _oneBlockMax != 0)
+            {
+                _blockContents[index] = new Block(it.Key, it.Value % _oneBlockMax);
+                index++;
+            }
 
         }
     }
@@ -97,16 +129,24 @@ public class Block
 {
     String _itemId;
     int _quantity;
-    static int _max;
+    static int BLOCK_MAX = 10;//一ブロックの最大の値
 
-    public Block(String id, int num)
+    public Block(String id, int num )
     {
         this._itemId = id;
         this._quantity = num;
     }
 
-    String getItemId() { return this._itemId; }
-    int getQuantity() { return this._quantity; }
+    public String getItemId() { return this._itemId; }
+    public int getQuantity() { return this._quantity; }
+
+    public int getBLOCK_MAX() { return BLOCK_MAX; }
+
+    //public void setBLOCK_MAX(int max)
+    //{
+    //    BLOCK_MAX = max;
+    //}
+
 
     delegate void addNum();
     delegate void subNum();

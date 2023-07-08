@@ -10,7 +10,19 @@ public class BagTest : MonoBehaviour
 
     private void Start()
     {
-        bag = player.getPlayerBag();
+        bag = new Bag();
+        cook = new Cook(gamedata);
+
+    }
+    GameData gamedata = new GameData();
+
+    Cook cook;
+
+    public void Cook()
+    {
+        //cook.remakeCanCookItemsList(player.getPlayerBag());
+        cook.doCook("#100");
+        Debug.Log("クックしました。");
     }
 
     public void ShowBag()

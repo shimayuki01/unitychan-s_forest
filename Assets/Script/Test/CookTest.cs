@@ -6,32 +6,32 @@ public class CookTest : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField]Player player;
-    [SerializeField]Cook cook;
-    [SerializeField]GameData g;
-    
+    GameData gamedata = new GameData();
+
+    Cook cook;
+    private void Start()
+    {
+        cook = new Cook(gamedata);
+    }
 
 
     public void Cook()
     {
-        cook.remakeCanCookItemsList(player.getPlayerBag());
-        cook.doCook("#100", player.getPlayerBag());
+        //cook.remakeCanCookItemsList(player.getPlayerBag());
+        cook.doCook("#100");
         Debug.Log("クックしました。");
     }
 
-    public void printRemakeList()
-    {
-        cook.remakeCanCookItemsList(player.getPlayerBag());
-        Debug.Log("作れる料理のリスト----------");
-        foreach (string a in cook._canCookItems)
-        {
-            Debug.Log(a);
-        }
+    //public void printRemakeList()
+    //{
+    //    cook.remakeCanCookItemsList(player.getPlayerBag());
+    //    Debug.Log("作れる料理のリスト----------");
+    //    foreach (string a in cook._canCookItems)
+    //    {
+    //        Debug.Log(a);
+    //    }
+    //}
 
 
 
-    }
-
-    
-    
 }

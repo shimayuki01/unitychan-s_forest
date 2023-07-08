@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-public interface IItemConsumption : IBag
+public interface IItemConsumption
 {
     void inItem(string itemId, int num);
     void subItemQuantity(string item_id, int num);
 
     //バッグに入れることができるアイテムのidのリスト
-    string[] getInItemArgumentList();
+    List<string> createInItemArgumentList();
 
     //バッグの中身
     Dictionary<string, int> getBagSummary();
