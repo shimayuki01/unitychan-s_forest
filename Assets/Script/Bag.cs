@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class Bag : IItemConsumption
 {
-    static int _maxContentsNum = 10;
-    Block[] _blockContents = new Block[_maxContentsNum];
+    static int MAX_CONTENTS_NUM = 10;
+    Block[] _blockContents = new Block[MAX_CONTENTS_NUM];
     //_summaryContents<id,数>
     Dictionary<String, int> _summaryContents = new Dictionary<String, int>();
     int _oneBlockMax;
@@ -66,7 +66,7 @@ public class Bag : IItemConsumption
 
     public bool isMaxBag()
     {
-        if (_blockContents[-1] == null) //bagがmaxじゃなければ(_blockContentsに最後まで入っていない)false
+        if (_blockContents[MAX_CONTENTS_NUM - 1] == null) //bagがmaxじゃなければ(_blockContentsに最後まで入っていない)false
             return false;
 
         return true; //そうでなければtrue

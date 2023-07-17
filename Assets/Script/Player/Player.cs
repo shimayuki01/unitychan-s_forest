@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Ono _ono = new Ono(1, 1);
-    GameData gamedata = new GameData();
+    [SerializeField] GameData gamedata;
     IManager _manager;
 
 
@@ -16,7 +16,10 @@ public class Player : MonoBehaviour
     {
         _manager = new Cook(gamedata);
     }
-
+    public void inItem(string id, int quantity)
+    {
+        _manager.pickUpItem(id, quantity);
+    }
     public int getPlayerOnoLv(){ return _ono.getLv();}
 
     public int getPlayerOnoAtk() { return _ono.getAtk(); }

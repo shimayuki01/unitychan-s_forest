@@ -6,7 +6,7 @@ public class CookTest : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    GameData gamedata = new GameData();
+    [SerializeField] GameData gamedata;
 
     Cook cook;
     private void Start()

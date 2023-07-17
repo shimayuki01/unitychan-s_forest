@@ -1,29 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BagTest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] Player player;
-    Bag bag;
+    [SerializeField] Player bag;
 
-    private void Start()
-    {
-        bag = new Bag();
-        cook = new Cook(gamedata);
-
-    }
-    GameData gamedata = new GameData();
-
-    Cook cook;
-
-    public void Cook()
-    {
-        //cook.remakeCanCookItemsList(player.getPlayerBag());
-        cook.doCook("#100");
-        Debug.Log("クックしました。");
-    }
 
     public void ShowBag()
     {
@@ -42,7 +25,7 @@ public class BagTest : MonoBehaviour
         Debug.Log("カレーを2つバッグに入ました。");
         bag.inItem("#100",2);
     }
-    public void inItemISHI()
+    public void inItemISHI()    
     {
         Debug.Log("石の追加");
         bag.inItem("#000", 2);
