@@ -36,10 +36,10 @@ public class Cook : IManager
 
     public void pickUpItem(string item_id, int quantity)//item‚ğE‚¤
     {
-        List<string> inItemArgumentList = new List<string>(_bag.createInItemArgumentList());
-        if (_bag.isMaxBag() && !inItemArgumentList.Contains(item_id)) {
-            return;
-        }
+        //List<string> inItemArgumentList = new List<string>(_bag.createInItemArgumentList());
+        //if (_bag.isMaxBag() && !inItemArgumentList.Contains(item_id)) {
+        //    return;
+        //}
         _bag.inItem(item_id, quantity);
     }
 

@@ -7,7 +7,7 @@ public class Bag : IItemConsumption
     Block[] _blockContents = new Block[MAX_CONTENTS_NUM];
     //_summaryContents<id,数>
     Dictionary<String, int> _summaryContents = new Dictionary<String, int>();
-    int _oneBlockMax;
+    int BLOCK_MAX = 10;
 
     delegate List<Item> getContents();
 
@@ -50,6 +50,8 @@ public class Bag : IItemConsumption
         {
             _summaryContents.Add(id, quantity);
         }
+
+        summaryToBlock();
     }
 
     //バッグのアイテムを減らす
@@ -95,17 +97,17 @@ public class Bag : IItemConsumption
         int index = 0;
         foreach (KeyValuePair<String, int> it in _summaryContents)
         {
-            int blockNum = it.Value / _oneBlockMax;
+            int blockNum = it.Value / BLOCK_MAX;
             for (int i = 0; i < blockNum; i++)
             {
-                _blockContents[index] = new Block(it.Key, _oneBlockMax);
+                _blockContents[index] = new Block(it.Key, BLOCK_MAX);
                 index++;
             }
 
             //余りが存在するなら余りの分を追加で入れる
-            if (it.Value % _oneBlockMax != 0)
+            if (it.Value % BLOCK_MAX != 0)
             {
-                _blockContents[index] = new Block(it.Key, it.Value % _oneBlockMax);
+                _blockContents[index] = new Block(it.Key, it.Value % BLOCK_MAX);
                 index++;
             }
 
