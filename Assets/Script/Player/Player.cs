@@ -20,6 +20,17 @@ public class Player : MonoBehaviour
     {
         _manager.pickUpItem(id, quantity);
     }
+
+    public void Cook(string cookItem_id)
+    {
+        _manager.doCook(cookItem_id);
+    }
+
+    public void Walk(Vector2 walkVector)
+    {
+        Debug.Log("ï‡Ç≠ï˚å¸ÅF"+walkVector);
+    }
+
     public int getPlayerOnoLv(){ return _ono.getLv();}
 
     public int getPlayerOnoAtk() { return _ono.getAtk(); }
