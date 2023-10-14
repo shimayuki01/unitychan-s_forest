@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public void Walk(Vector2 walkVector)
     {
         Debug.Log("•à‚­•ûŒüF"+walkVector);
+        walk(gameObject, walkVector);
     }
 
     public int getPlayerOnoLv(){ return _ono.getLv();}
