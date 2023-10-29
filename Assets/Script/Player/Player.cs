@@ -9,12 +9,17 @@ public class Player : MonoBehaviour
     Ono _ono = new Ono(1, 1);
     [SerializeField] GameData gamedata;
     IManager _manager;
+    [SerializeField] IPlayerMove playerMove;
+
+    // ひとつ前のwalkVectorを保存する。
+    private bool beforeIsZero = false;
 
 
 
     private void Start()
     {
         _manager = new Cook(gamedata);
+        playerMove = GetComponent<Walk>();
     }
     public void inItem(string id, int quantity)
     {
@@ -28,8 +33,24 @@ public class Player : MonoBehaviour
 
     public void Walk(Vector2 walkVector)
     {
-        Debug.Log("歩く方向："+walkVector);
-        walk(gameObject, walkVector);
+        if (walkVector.magnitude > 0)
+        {
+            playerMove.walk(walkVector);
+            beforeIsZero = false;
+        }
+        else
+        {
+            // 連続でvectorが0の場合スルーさせたい
+            if (!beforeIsZero)
+            {
+                // プレイヤーを止めないといけないので
+                // 1回は処理を実行する。
+                playerMove.walk(walkVector);
+                beforeIsZero = true;
+            }
+            
+        }
+ 
     }
 
     public int getPlayerOnoLv(){ return _ono.getLv();}
