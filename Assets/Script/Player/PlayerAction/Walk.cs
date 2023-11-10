@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Walk : MonoBehaviour, IPlayerMove
 {
@@ -28,8 +29,8 @@ public class Walk : MonoBehaviour, IPlayerMove
         //    transform.rotation = Quaternion.Euler(0, angle, 0);
         //}
         //characterController.Move(this.gameObject.transform.forward * MoveSpeed * Time.deltaTime);
-        Vector3 moveZ = cameraForward * Input.GetAxis("Vertical") * 1;  //　前後（カメラ基準）　 
-        Vector3 moveX = Camera.main.transform.right * Input.GetAxis("Horizontal") * 1; // 左右（カメラ基準）
+        Vector3 moveZ = new Vector3(0, 0, -walkVector.y);  //　前後（カメラ基準）　 
+        Vector3 moveX = new Vector3(-walkVector.x, 0, 0); // 左右（カメラ基準）
 
         // isGrounded は地面にいるかどうかを判定します
         // 地面にいるときはジャンプを可能に
