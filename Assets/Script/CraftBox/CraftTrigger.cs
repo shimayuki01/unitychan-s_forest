@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -8,16 +9,25 @@ public class CraftTrigger : MonoBehaviour
 {
     private bool isInCraftArea = false;
     public Texture craftButtonImage;
+    [SerializeField] Button _actionButton;
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("当たった!");
-        isInCraftArea = true;
+        if (other.tag == "Player")
+        {
+            Debug.Log("当たった!");
+            isInCraftArea = true;
+            _actionButton.onClick.AddListener(comment);
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("離れた!");
-        isInCraftArea = false;
+        if (other.tag == "Player")
+        {
+            Debug.Log("離れた!");
+            isInCraftArea = false;
+            _actionButton.onClick.RemoveListener(comment);
+        }
     }
     void OnGUI()
     {
@@ -29,5 +39,10 @@ public class CraftTrigger : MonoBehaviour
             }
         }
         
+    }
+
+    void comment()
+    {
+        Debug.Log("イベント実行");
     }
 }

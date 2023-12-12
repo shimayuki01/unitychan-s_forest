@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExecuteAction : MonoBehaviour
 {
     [SerializeField] Player _player;
+    [SerializeField] Button _actionButton;
     public void Cook(string cookItem_id)
     {
         // クックできるかの確認
@@ -15,5 +17,10 @@ public class ExecuteAction : MonoBehaviour
     {
         // 歩く処理
         _player.Walk(walkVector);
+    }
+
+    public void action()
+    {
+        _actionButton.onClick.Invoke();
     }
 }
