@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4122,8 +4122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbe4cbc969ce9f4f969787e054695d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craftButtonImage: {fileID: 2800000, guid: d63a96ec2c23a6e45a729f23606a8d88, type: 3}
+  craftButtonImage: {fileID: 21300000, guid: d63a96ec2c23a6e45a729f23606a8d88, type: 3}
   _actionButton: {fileID: 1244169815}
+  registerAction: {fileID: 1692837695}
 --- !u!1 &1040824345
 GameObject:
   m_ObjectHideFlags: 3

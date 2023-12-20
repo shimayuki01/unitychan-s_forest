@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class CraftTrigger : MonoBehaviour
 {
     private bool isInCraftArea = false;
-    public Texture craftButtonImage;
+    public Sprite craftButtonImage;
     [SerializeField] Button _actionButton;
+    [SerializeField] RegisterAction registerAction;
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -17,6 +18,8 @@ public class CraftTrigger : MonoBehaviour
             Debug.Log("当たった!");
             isInCraftArea = true;
             _actionButton.onClick.AddListener(comment);
+            _actionButton.gameObject.SetActive(true);
+            _actionButton.image.sprite = craftButtonImage;
         }
     }
 
@@ -27,22 +30,24 @@ public class CraftTrigger : MonoBehaviour
             Debug.Log("離れた!");
             isInCraftArea = false;
             _actionButton.onClick.RemoveListener(comment);
+            _actionButton.gameObject.SetActive(false);
         }
     }
-    void OnGUI()
-    {
-        if (isInCraftArea)
-        {
-            if (GUI.Button(new Rect(1500, 970, 110, 100),craftButtonImage))
-            {
-                print("You clicked the button!");
-            }
-        }
+    //void OnGUI()
+    //{
+    //    if (isInCraftArea)
+    //    {
+    //        if (GUI.Button(new Rect(1500, 970, 110, 100),craftButtonImage))
+    //        {
+    //            print("You clicked the button!");
+    //        }
+    //    }
         
-    }
+    //}
 
     void comment()
     {
         Debug.Log("イベント実行");
+        registerAction.dyanamicGameCondition.setCurrentScene(DyanamicGameCondition.gameCondition.MenueScene);
     }
 }
