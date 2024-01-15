@@ -11,15 +11,18 @@ public class CraftTrigger : MonoBehaviour
     public Sprite craftButtonImage;
     [SerializeField] Button _actionButton;
     [SerializeField] RegisterAction registerAction;
+    [SerializeField] GameObject _craftPanelPrefab;
+    GameObject _craftPanelInstance;
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Debug.Log("ìñÇΩÇ¡ÇΩ!");
+            //Debug.Log("ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ!");
             isInCraftArea = true;
             _actionButton.onClick.AddListener(comment);
             _actionButton.gameObject.SetActive(true);
             _actionButton.image.sprite = craftButtonImage;
+            _actionButton.onClick.AddListener(OpenCraftPanel);
         }
     }
 
@@ -27,27 +30,25 @@ public class CraftTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("ó£ÇÍÇΩ!");
+            //Debug.Log("ÔøΩÔøΩÔøΩÍÇΩ!");
             isInCraftArea = false;
-            _actionButton.onClick.RemoveListener(comment);
-            _actionButton.gameObject.SetActive(false);
+            _actionButton.onClick.RemoveListener(OpenCraftPanel);
         }
     }
-    //void OnGUI()
-    //{
-    //    if (isInCraftArea)
-    //    {
-    //        if (GUI.Button(new Rect(1500, 970, 110, 100),craftButtonImage))
-    //        {
-    //            print("You clicked the button!");
-    //        }
-    //    }
-        
-    //}
 
-    void comment()
+
+    void OpenCraftPanel()
     {
-        Debug.Log("ÉCÉxÉìÉgé¿çs");
-        registerAction.dyanamicGameCondition.setCurrentScene(DyanamicGameCondition.gameCondition.MenueScene);
+        if ( _craftPanelInstance == null)
+        {
+            //Debug.Log("ÔøΩvÔøΩÔøΩÔøΩnÔøΩuÔøΩÔøΩÔøΩÔøΩ");
+            _craftPanelInstance = Instantiate(_craftPanelPrefab);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Destroy(_craftPanelInstance);
+            Time.timeScale = 1f;
+        }
     }
 }
