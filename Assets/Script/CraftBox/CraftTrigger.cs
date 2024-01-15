@@ -43,8 +43,10 @@ public class CraftTrigger : MonoBehaviour
         if ( _craftPanelInstance == null)
         {
             //Debug.Log("�v���n�u����");
+            //Debug.Log("�v���n�u����");
+            //������ďd��������h��
             _craftPanelInstance = Instantiate(_craftPanelPrefab);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
     }
 }

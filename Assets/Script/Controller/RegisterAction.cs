@@ -11,6 +11,8 @@ public class RegisterAction : MonoBehaviour
 
     Dictionary<string, List<KeyCode>> _action2key = new Dictionary<string, List<KeyCode>>();
     public DyanamicGameCondition dyanamicGameCondition;
+    Dictionary<string, List<KeyCode>> _tempAppend = new Dictionary<string, List<KeyCode>>();//_stete2keyconfig
+    Dictionary<string, Dictionary<string, List<KeyCode>>> _state2Keyconfig = new Dictionary<string, Dictionary<string, List<KeyCode>>>();
 
     private void Start()
     {
@@ -20,32 +22,60 @@ public class RegisterAction : MonoBehaviour
         _inputKey.OnDownWASD.Subscribe(value => { _executeAction.Walk(value);});
 
 
-        _inputKey.OnKeyDown.Subscribe(value =>
-        {
-            if (dyanamicGameCondition.getCurrentScene() == DyanamicGameCondition.gameCondition.NormalScene)
-            {
-                Debug.Log("ƒm[ƒ}ƒ‹ƒV[ƒ“‚Å“ü—Í‚ªs‚í‚ê‚Ä‚¢‚Ü‚·" + value);
-                if (_action2key["action"].Contains(value))
-                {
-                    _executeAction.action();
-                }
-            }
-            if (dyanamicGameCondition.getCurrentScene() == DyanamicGameCondition.gameCondition.MenueScene)
-            {   
-                Debug.Log("ƒƒjƒ…[ƒV[ƒ“‚Å“ü—Í‚ªs‚í‚ê‚Ä‚¢‚Ü‚·BF"+ value);
+        // _inputKey.OnKeyDown.Subscribe(value =>
+        // {
+        //     if (dyanamicGameCondition.getCurrentScene() == DyanamicGameCondition.gameCondition.NormalScene)
+        //     {
+        //         Debug.Log("ï¿½mï¿½[ï¿½}ï¿½ï¿½ï¿½Vï¿½[ï¿½ï¿½ï¿½Å“ï¿½ï¿½Í‚ï¿½ï¿½sï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½" + value);
+        //         if (_action2key["action"].Contains(value))
+        //         {
+        //             _executeAction.action();
+        //         }
+        //     }
+        //     if (dyanamicGameCondition.getCurrentScene() == DyanamicGameCondition.gameCondition.MenueScene)
+        //     {   
+        //         Debug.Log("ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½[ï¿½ï¿½ï¿½Å“ï¿½ï¿½Í‚ï¿½ï¿½sï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½Bï¿½F"+ value);
                 
+        //     }
+        // });
+        _inputKey.OnKeyDown.Subscribe(value => {
+            _tempAppend.Clear();
+            Debug.Log(_tempAppend["Contact"]);
+            _tempAppend = _state2Keyconfig["Normal"];
+
+            if (_tempAppend["Contact"].Contains(value)){
+                _executeAction.action();
             }
+            else if (/*_state2Keyconfig["Menu"]["ClosePanel"].Contains(value)*/ false)
+            {
+                Debug.Log("ï¿½Gï¿½Xï¿½Pï¿½[ï¿½v");            }
         });
+
     }
                 
     
 
     void InitKeyconfig()
     {
+        _tempAppend.Clear();
+        //todo ï¿½Rï¿½sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½(ï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+        _tempAppend.Add( "Contact", new List<KeyCode>(){ KeyCode.F });
+        Debug.Log(_tempAppend["Contact"]);
+        _state2Keyconfig.Add("Normal",_tempAppend);
+        Debug.Log(_state2Keyconfig["Normal"]);
 
-        _action2key.Add( "action", new List<KeyCode>(){ KeyCode.F });
+        _tempAppend.Clear();
+        _tempAppend.Add("ClosePanel", new List<KeyCode>() { KeyCode.Escape });
+        _state2Keyconfig.Add("Menu", _tempAppend);
+
         //_action2key.Add( "actionA", new List<KeyCode>(){ KeyCode.F });
         //_action2key.Add( "actionA", new List<KeyCode>(){ KeyCode.F });
     }
+
+    void NormalKey()
+    {
+
+    }
+
     
 }
