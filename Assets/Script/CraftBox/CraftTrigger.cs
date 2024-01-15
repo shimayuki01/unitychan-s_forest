@@ -12,7 +12,8 @@ public class CraftTrigger : MonoBehaviour
     [SerializeField] Button _actionButton;
     [SerializeField] RegisterAction registerAction;
     [SerializeField] GameObject _craftPanelPrefab;
-    GameObject _craftPanelInstance;
+    public GameObject _craftPanelInstance;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -44,11 +45,6 @@ public class CraftTrigger : MonoBehaviour
             //Debug.Log("�v���n�u����");
             _craftPanelInstance = Instantiate(_craftPanelPrefab);
             Time.timeScale = 0f;
-        }
-        else
-        {
-            Destroy(_craftPanelInstance);
-            Time.timeScale = 1f;
         }
     }
 }
