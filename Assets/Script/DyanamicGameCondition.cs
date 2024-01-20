@@ -1,19 +1,21 @@
-public class DyanamicGameCondition
+public enum gameScene
 {
-    public enum gameCondition
-    {
-        NormalScene,
-        MenueScene
+    NormalScene,
+    MenueScene
+}
+
+// 現在のゲームシーン(currentScene)を管理するクラス
+public class DyanamicGameScene
+{
+    private gameScene _currentScene = gameScene.NormalScene;
+
+    public void setCurrentScene(gameScene scene){
+        this._currentScene = scene;
     }
 
-    private gameCondition currentScene = gameCondition.NormalScene;
-    public void setCurrentScene(gameCondition scene){
-        this.currentScene = scene;
-    }
-
-    public gameCondition getCurrentScene()
+    public gameScene getCurrentScene()
     {
-        return currentScene;
+        return _currentScene;
     }
 
 }

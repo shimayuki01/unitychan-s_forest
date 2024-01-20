@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class HandleCraftUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] RegisterAction registerAction;
 
-    //大元のPanelUIを削除してパネル表示を消す
+    
     public void CloseCraftPanel()
     {
+        // 大元のPanelUIを削除してパネル表示を消す   
         Time.timeScale = 1f;
         Destroy(gameObject);
-        
+
+        // ゲームシーンをMenuSceneからNormalSceneに変更する
+        //registerAction.dyanamicGameScene.setCurrentScene(gameScene.NormalScene);
+
     }
 }

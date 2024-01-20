@@ -9,47 +9,38 @@ public class RegisterAction : MonoBehaviour
     [SerializeField] InputKey _inputKey;
     [SerializeField] ExecuteAction _executeAction;
 
-    Dictionary<string, List<KeyCode>> _action2key = new Dictionary<string, List<KeyCode>>();
-    public DyanamicGameCondition dyanamicGameCondition;
-    Dictionary<string, List<KeyCode>> _tempAppend = new Dictionary<string, List<KeyCode>>();//_stete2keyconfig
+    public DyanamicGameScene dyanamicGameScene;
     Dictionary<string, Dictionary<string, List<KeyCode>>> _state2Keyconfig = new Dictionary<string, Dictionary<string, List<KeyCode>>>();
 
     private void Start()
     {
         InitKeyconfig();
-        dyanamicGameCondition = new DyanamicGameCondition();
+        dyanamicGameScene = new DyanamicGameScene();
 
-        _inputKey.OnDownWASD.Subscribe(value => { _executeAction.Walk(value);});
+        _inputKey.OnDownWASD.Subscribe(walkVector => { _executeAction.Walk(walkVector);});
 
 
-        // _inputKey.OnKeyDown.Subscribe(value =>
-        // {
-        //     if (dyanamicGameCondition.getCurrentScene() == DyanamicGameCondition.gameCondition.NormalScene)
-        //     {
-        //         Debug.Log("�m�[�}���V�[���œ��͂��s���Ă��܂�" + value);
-        //         if (_action2key["action"].Contains(value))
-        //         {
-        //             _executeAction.action();
-        //         }
-        //     }
-        //     if (dyanamicGameCondition.getCurrentScene() == DyanamicGameCondition.gameCondition.MenueScene)
-        //     {   
-        //         Debug.Log("���j���[�V�[���œ��͂��s���Ă��܂��B�F"+ value);
-                
-        //     }
-        // });
-        _inputKey.OnKeyDown.Subscribe(value => {
-            _tempAppend.Clear();
-            Debug.Log(_tempAppend["Contact"]);
-            _tempAppend = _state2Keyconfig["Normal"];
-
-            if (_tempAppend["Contact"].Contains(value)){
-                _executeAction.action();
-            }
-            else if (/*_state2Keyconfig["Menu"]["ClosePanel"].Contains(value)*/ false)
+        _inputKey.OnKeyDown.Subscribe(pressedKey =>
+        {
+            if (dyanamicGameScene.getCurrentScene() == gameScene.NormalScene)
             {
-                Debug.Log("�G�X�P�[�v");            }
+                Debug.Log("NormalScene pressd " + pressedKey);
+                if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
+                {
+                    _executeAction.action();
+                }
+            }
+            if (dyanamicGameScene.getCurrentScene() == gameScene.MenueScene)
+            {
+                Debug.Log("MenuScene pressd " + pressedKey);
+                if (_state2Keyconfig["Menu"]["ClosePanel"].Contains(pressedKey))
+                {
+                    _executeAction.action();
+                }
+
+            }
         });
+
 
     }
                 
@@ -57,19 +48,16 @@ public class RegisterAction : MonoBehaviour
 
     void InitKeyconfig()
     {
-        _tempAppend.Clear();
-        //todo �R�s�[���������Ŏ�����n��(�N���A������n�����̂�������)
+        //_stete2keyconfigに追加するための辞書
+        Dictionary<string, List<KeyCode>> _tempAppend = new Dictionary<string, List<KeyCode>>();
+
         _tempAppend.Add( "Contact", new List<KeyCode>(){ KeyCode.F });
-        Debug.Log(_tempAppend["Contact"]);
-        _state2Keyconfig.Add("Normal",_tempAppend);
-        Debug.Log(_state2Keyconfig["Normal"]);
+        _state2Keyconfig.Add("Normal", new Dictionary<string, List<KeyCode>>(_tempAppend));
 
         _tempAppend.Clear();
         _tempAppend.Add("ClosePanel", new List<KeyCode>() { KeyCode.Escape });
-        _state2Keyconfig.Add("Menu", _tempAppend);
+        _state2Keyconfig.Add("Menu", new Dictionary<string, List<KeyCode>>(_tempAppend));
 
-        //_action2key.Add( "actionA", new List<KeyCode>(){ KeyCode.F });
-        //_action2key.Add( "actionA", new List<KeyCode>(){ KeyCode.F });
     }
 
     void NormalKey()
