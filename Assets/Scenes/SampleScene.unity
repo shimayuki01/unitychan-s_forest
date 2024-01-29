@@ -4126,7 +4126,7 @@ MonoBehaviour:
   _actionButton: {fileID: 1244169815}
   registerAction: {fileID: 2106867696}
   _craftPanelPrefab: {fileID: 3088147346802090527, guid: c678328f443ba1b47a7d4990fa385210, type: 3}
-  _craftPanelInstance: {fileID: 0}
+  _baseMenuPanel: {fileID: 1276301571}
 --- !u!1 &1040824345
 GameObject:
   m_ObjectHideFlags: 3
@@ -4874,6 +4874,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1279437348525638701, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
   m_PrefabInstance: {fileID: 1270498255}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1276301570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276301572}
+  - component: {fileID: 1276301571}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1276301571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276301570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f548fa6e532a84fb2cb11f2e6eb560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _registerAction: {fileID: 2106867696}
+  _panelInstance: {fileID: 0}
+--- !u!4 &1276301572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276301570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80, y: 15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1289000907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7770,7 +7815,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 28896485}
   _actionButton: {fileID: 1244169815}
-  _craftTrigger: {fileID: 1022416832}
+  _baseMenuPanel: {fileID: 1276301571}
+  _bagPanel: {fileID: 3088147346802090527, guid: ae43abbf209d9c649a1b5b4e60759adf, type: 3}
 --- !u!1 &2126022715
 GameObject:
   m_ObjectHideFlags: 3

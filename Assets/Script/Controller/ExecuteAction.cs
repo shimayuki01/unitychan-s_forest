@@ -7,7 +7,8 @@ public class ExecuteAction : MonoBehaviour
 {
     [SerializeField] Player _player;
     [SerializeField] Button _actionButton;
-    [SerializeField] CraftTrigger _craftTrigger;
+    [SerializeField] BaseMenuPanel _baseMenuPanel;
+    [SerializeField] GameObject _bagPanel;
 
     public void Cook(string cookItem_id)
     {
@@ -28,7 +29,7 @@ public class ExecuteAction : MonoBehaviour
 
     public void closePanel()
     {
-        Button closePanelButton = _craftTrigger._craftPanelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
+        Button closePanelButton = _baseMenuPanel.getCloseButton();
         closePanelButton.onClick.Invoke();
     }
 
@@ -38,6 +39,9 @@ public class ExecuteAction : MonoBehaviour
         {
             Debug.Log(i.Key + " " + i.Value);
         }
-         
+
+        _baseMenuPanel.InstiatePanel(_bagPanel);
+
+
     }
 }
