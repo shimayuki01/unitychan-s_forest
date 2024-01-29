@@ -7,6 +7,8 @@ public class ExecuteAction : MonoBehaviour
 {
     [SerializeField] Player _player;
     [SerializeField] Button _actionButton;
+    [SerializeField] CraftTrigger _craftTrigger;
+
     public void Cook(string cookItem_id)
     {
         // TODO:クックできるかの確認
@@ -22,5 +24,11 @@ public class ExecuteAction : MonoBehaviour
     public void action()
     {
         _actionButton.onClick.Invoke();
+    }
+
+    public void closePanel()
+    {
+        Button closePanelButton = _craftTrigger._craftPanelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
+        closePanelButton.onClick.Invoke();
     }
 }

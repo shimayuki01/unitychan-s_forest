@@ -37,7 +37,6 @@ public class CraftTrigger : MonoBehaviour
 
     void OpenCraftPanel()
     {
-        Button a;
         if ( _craftPanelInstance == null)
         {
             //Debug.Log("open panel");

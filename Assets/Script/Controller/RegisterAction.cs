@@ -22,20 +22,31 @@ public class RegisterAction : MonoBehaviour
 
         _inputKey.OnKeyDown.Subscribe(pressedKey =>
         {
+            // 通常画面のキーコンフィグ
             if (dyanamicGameScene.getCurrentScene() == gameScene.NormalScene)
             {
                 Debug.Log("NormalScene pressd " + pressedKey);
+                // 接触ボタンのキーが入力された
                 if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
                 {
                     _executeAction.action();
                 }
+                
+                if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
+                {
+                    //_executeAction.action();
+                }
+
             }
+
+            // メニュー画面のキーコンフィグ
             if (dyanamicGameScene.getCurrentScene() == gameScene.MenueScene)
             {
                 Debug.Log("MenuScene pressd " + pressedKey);
+                // メニューを閉じるキーが入力された
                 if (_state2Keyconfig["Menu"]["ClosePanel"].Contains(pressedKey))
                 {
-                    _executeAction.action();
+                    _executeAction.closePanel();
                 }
 
             }
@@ -52,8 +63,10 @@ public class RegisterAction : MonoBehaviour
         Dictionary<string, List<KeyCode>> _tempAppend = new Dictionary<string, List<KeyCode>>();
 
         _tempAppend.Add( "Contact", new List<KeyCode>(){ KeyCode.F });
+        _tempAppend.Add( "OpenBag", new List<KeyCode>(){ KeyCode.B });
         _state2Keyconfig.Add("Normal", new Dictionary<string, List<KeyCode>>(_tempAppend));
 
+        
         _tempAppend.Clear();
         _tempAppend.Add("ClosePanel", new List<KeyCode>() { KeyCode.Escape });
         _state2Keyconfig.Add("Menu", new Dictionary<string, List<KeyCode>>(_tempAppend));
