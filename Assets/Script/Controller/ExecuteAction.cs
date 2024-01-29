@@ -9,7 +9,7 @@ public class ExecuteAction : MonoBehaviour
     [SerializeField] Button _actionButton;
     public void Cook(string cookItem_id)
     {
-        // クックできるかの確認
+        // TODO:クックできるかの確認
         _player.Cook(cookItem_id);
     }
 

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _manager = new Cook(gamedata);
+        _manager = new PlayerManager(gamedata);
         playerMove = GetComponent<Walk>();
     }
     public void inItem(string id, int quantity)

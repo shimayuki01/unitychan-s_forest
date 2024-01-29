@@ -8,10 +8,10 @@ public class CookTest : MonoBehaviour
 
     [SerializeField] GameData gamedata;
 
-    Cook cook;
+    PlayerManager cook;
     private void Start()
     {
-        cook = new Cook(gamedata);
+        cook = new PlayerManager(gamedata);
     }
 
 

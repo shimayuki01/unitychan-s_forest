@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 
 //óøóùÇ™
-public class Cook : IManager
+public class PlayerManager : IManager
 {
     IItemConsumption _bag;
     ICookItemSozaiAcquisition _cookItemSozaiAcquisition;
 
 
-    public Cook(ICookItemSozaiAcquisition cookItemSozaiAcquisition)
+    public PlayerManager(ICookItemSozaiAcquisition cookItemSozaiAcquisition)
     {
         _bag = new Bag();
         _cookItemSozaiAcquisition = cookItemSozaiAcquisition;
