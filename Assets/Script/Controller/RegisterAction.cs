@@ -32,9 +32,9 @@ public class RegisterAction : MonoBehaviour
                     _executeAction.action();
                 }
                 
-                if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
+                if (_state2Keyconfig["Normal"]["OpenBag"].Contains(pressedKey))
                 {
-                    //_executeAction.action();
+                    _executeAction.openBag();
                 }
 
             }

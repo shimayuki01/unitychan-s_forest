@@ -7770,6 +7770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 28896485}
   _actionButton: {fileID: 1244169815}
+  _craftTrigger: {fileID: 1022416832}
 --- !u!1 &2126022715
 GameObject:
   m_ObjectHideFlags: 3

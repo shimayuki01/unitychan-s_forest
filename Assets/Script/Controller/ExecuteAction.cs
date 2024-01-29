@@ -31,4 +31,13 @@ public class ExecuteAction : MonoBehaviour
         Button closePanelButton = _craftTrigger._craftPanelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
         closePanelButton.onClick.Invoke();
     }
+
+    public void openBag()
+    {
+        foreach (var i in _player.getBagSummary())
+        {
+            Debug.Log(i.Key + " " + i.Value);
+        }
+         
+    }
 }

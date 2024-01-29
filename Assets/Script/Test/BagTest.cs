@@ -8,6 +8,10 @@ public class BagTest : MonoBehaviour
     [SerializeField] Player bag;
 
 
+    public void Start()
+    {
+        
+    }
     public void ShowBag()
     {
         Debug.Log("ーーーーーーーーバッグの中身ーーーーーーーー");
@@ -22,8 +26,8 @@ public class BagTest : MonoBehaviour
 
     public void inItem()
     {
-        Debug.Log("カレーを2つバッグに入ました。");
-        bag.inItem("#100",2);
+        Debug.Log("カレーを1つバッグに入ました。");
+        bag.Cook("#100");
     }
     public void inItemISHI()    
     {
@@ -35,6 +39,8 @@ public class BagTest : MonoBehaviour
         Debug.Log("木の追加");
         bag.inItem("#001", 2);
     }
+
+    
 }
 
 
