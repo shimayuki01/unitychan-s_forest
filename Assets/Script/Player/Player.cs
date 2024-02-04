@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Ono _ono = new Ono(1, 1);
+    IOno _ono;
     [SerializeField] GameData gamedata;
     IManager _manager;
     [SerializeField] IPlayerMove playerMove;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        _ono = new Ono(1, 1);
         _manager = new PlayerManager(gamedata);
         playerMove = GetComponent<Walk>();
     }
@@ -48,14 +49,14 @@ public class Player : MonoBehaviour
                 playerMove.walk(walkVector);
                 beforeIsZero = true;
             }
-            
+
         }
- 
+
     }
 
-    public int getPlayerOnoLv(){ return _ono.getLv();}
+    public int getPlayerOnoLv() { return _ono.getLv(); }
 
     public int getPlayerOnoAtk() { return _ono.getAtk(); }
 
-    public Dictionary<string, int> getBagSummary(){ return this._manager.getBagSummary();  }
+    public Dictionary<string, int> getBagSummary() { return this._manager.getBagSummary(); }
 }
