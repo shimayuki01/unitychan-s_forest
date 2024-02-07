@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class Walk : MonoBehaviour, IPlayerMove
 {
-    // Start is called before the first frame update
     CharacterController con;
     private Animator anim;
 
@@ -19,7 +18,7 @@ public class Walk : MonoBehaviour, IPlayerMove
         anim = GetComponent<Animator>();
         con = GetComponent<CharacterController>();
     }
-    
+
     public void walk(Vector2 walkVector)
     {
 

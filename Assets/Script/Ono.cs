@@ -1,4 +1,4 @@
-public class Ono
+public class Ono : IOno
 {
     private int lv;
     private int atk;
