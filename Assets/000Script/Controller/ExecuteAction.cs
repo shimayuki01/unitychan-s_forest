@@ -9,6 +9,7 @@ public class ExecuteAction : MonoBehaviour
     [SerializeField] Button _actionButton;
     [SerializeField] BaseMenuPanel _baseMenuPanel;
     [SerializeField] GameObject _bagPanel;
+    [SerializeField] BagContensRenderer _bagContensRenderer;
 
     public void Cook(string cookItem_id)
     {
@@ -40,6 +41,8 @@ public class ExecuteAction : MonoBehaviour
         }
 
         _baseMenuPanel.InstiatePanel(_bagPanel);
+        Dictionary<string, int> bagSummary = _player.getBagSummary();
+        _bagContensRenderer.DisplayItems(_bagPanel, bagSummary);
 
     }
 }
