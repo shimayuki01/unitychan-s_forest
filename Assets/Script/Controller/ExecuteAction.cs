@@ -29,8 +29,7 @@ public class ExecuteAction : MonoBehaviour
 
     public void closePanel()
     {
-        Button closePanelButton = _baseMenuPanel.getCloseButton();
-        closePanelButton.onClick.Invoke();
+        _baseMenuPanel.CloseButtonClicked();
     }
 
     public void openBag()
@@ -41,7 +40,6 @@ public class ExecuteAction : MonoBehaviour
         }
 
         _baseMenuPanel.InstiatePanel(_bagPanel);
-
 
     }
 }

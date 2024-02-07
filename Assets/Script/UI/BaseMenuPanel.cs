@@ -21,7 +21,7 @@ public class BaseMenuPanel : MonoBehaviour
             // TODO:簡潔に書く
             // クラフトパネルの閉じるボタンにClosePanel()の処理を加える。
             // (クラフトパネルに処理を書きたいがregisterActionをパネル側から参照することができない)
-            getCloseButton().onClick.AddListener(ClosePanel);
+            getCloseButton().onClick.AddListener(CloseButtonClicked);
 
             _registerAction.dyanamicGameScene.setCurrentScene(gameScene.MenueScene);
             Time.timeScale = 0f;
@@ -37,16 +37,16 @@ public class BaseMenuPanel : MonoBehaviour
         _registerAction.dyanamicGameScene.setCurrentScene(gameScene.NormalScene);
     }
 
-    public Button getCloseButton()
+    // パネルのクローズボタンを押したときの処理
+    public void CloseButtonClicked()
     {
-        if (_panelInstance == null)
-        {
-            Debug.Log("closeButton付きパネルが存在しないよ");
-            return null;
-        }
-           
+        ClosePanel();
+    }
+
+    private Button getCloseButton()
+    {
+
         return _panelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
-     
 
     }
 }
