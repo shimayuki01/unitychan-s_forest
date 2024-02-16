@@ -11,6 +11,9 @@ public class ExecuteAction : MonoBehaviour
     [SerializeField] GameObject _bagPanel;
     [SerializeField] BagContensRenderer _bagContensRenderer;
 
+    public GameObject _panelInstance;
+
+
     public void Cook(string cookItem_id)
     {
         // TODO:クックできるかの確認
@@ -40,9 +43,13 @@ public class ExecuteAction : MonoBehaviour
             Debug.Log(i.Key + " " + i.Value);
         }
 
-        _baseMenuPanel.InstiatePanel(_bagPanel);
         Dictionary<string, int> bagSummary = _player.getBagSummary();
-        _bagContensRenderer.DisplayItems(_bagPanel, bagSummary);
+
+        _baseMenuPanel.InstiatePanel(_bagPanel);
+        _bagContensRenderer.DisplayItems(_baseMenuPanel._panelInstance, bagSummary);
+
+
+
 
     }
 }
