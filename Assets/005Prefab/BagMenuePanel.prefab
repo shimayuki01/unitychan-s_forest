@@ -206,7 +206,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6115246168471211455}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1239,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1899100321428147066, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1899100321428147066, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1253,9 +1253,13 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3614511626082500745, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5277872139413245394, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5377649067224732669, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
       propertyPath: m_IsActive
@@ -1566,6 +1570,14 @@ PrefabInstance:
     - target: {fileID: 970676609851323734, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614511626082500745, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2906
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614511626082500745, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d9109ebd0e5dc448a24f1e7f44f16d8, type: 3}
