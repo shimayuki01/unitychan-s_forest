@@ -1,14 +1,14 @@
 {
   "gameItems": [
     {
-      "imgFileName": "english_muffin",
+      "imgFileName": "Assets/050image/wood_maruta.png",
       "name": "木材",
       "description" : "木を切ることで得られる",
       "id" : "#000"
       
     },
     {
-      "imgFileName": "food_rice_burger",
+      "imgFileName": "Assets/050image/ishi_stone.png",
       "name": "石",
       "description" : "拾うことで得られる",
       "id" : "#001"
