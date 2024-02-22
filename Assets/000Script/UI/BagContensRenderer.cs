@@ -7,8 +7,8 @@ public class BagContensRenderer : MonoBehaviour
 {
     public void DisplayItems(GameObject bagMenuePanel, Dictionary<string, int> bagSummary)
     {
-        GameObject temp = bagMenuePanel.transform.Find("BagPanel").gameObject;
-        GameObject itemPanelParent = temp.transform.Find("ItemPanel").gameObject;
+        //GameObject temp = bagMenuePanel.transform.Find("BagPanel").gameObject;
+        GameObject itemPanelParent = bagMenuePanel.transform.Find("ItemPanel").gameObject;
         int idx = 0;
         foreach (var item in bagSummary)
         {
