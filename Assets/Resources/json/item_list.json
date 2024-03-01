@@ -12,7 +12,14 @@
       "name": "石",
       "description" : "拾うことで得られる",
       "id" : "#001"
+    },
+    {
+      "imgFileName": "Assets/050image/fruit_apple.png",
+      "name": "リンゴ",
+      "description" : "拾うことで得られる",
+      "id" : "#002"
     }
+
   ]
 }
   

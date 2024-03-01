@@ -48,11 +48,6 @@ public class ExecuteAction : MonoBehaviour
     public void openBag()
     {
 
-
-
-
-
-
         foreach (var i in _player.getBagSummary())
         {
             Debug.Log(i.Key + " " + i.Value);

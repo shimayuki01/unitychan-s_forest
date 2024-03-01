@@ -1,7 +1,7 @@
 {
   "gameItems": [
     {
-        "imgFileName": "food_rice_burger",
+        "imgFileName": "Assets/050image/food_curryruce.png",
         "name": "カレー",
         "description" : "拾うことで得られる",
         "heal_amount":10,   
@@ -9,7 +9,7 @@
         "id" : "#100"
     },
     {
-        "imgFileName": "food_rice_burger",
+        "imgFileName": "Assets/050image/cooking_frypan.png",
         "name": "肉じゃが",
         "description" : "拾うことで得られる",
         "heal_amount":10,

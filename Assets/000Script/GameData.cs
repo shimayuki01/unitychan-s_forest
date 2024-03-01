@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class GameData : MonoBehaviour , ICookItemSozaiAcquisition
 { 
     Item[] itemDataArray;
     CookItem[] cookItemDataArray;
+    ArrayList allItemDataArray;
     Dictionary<string, Item> id2Item;
     Dictionary<string, CookItem> id2CookItem;
     Dictionary<string, CookItem> cookItemName2item;
+    Dictionary<string, Sprite> id2ItemImage;
 
 
     // Start is called before the first frame update
@@ -19,6 +25,9 @@ public class GameData : MonoBehaviour , ICookItemSozaiAcquisition
         itemDataArray = new JsonReaderFromResourcesFolder().GetItemDataArray().gameItems;
         //レシピ　= [CookItem カレー,CookItem 肉じゃが]
         cookItemDataArray = new JsonReaderFromResourcesFolder().GetRecipe().gameItems;
+
+        allItemDataArray = new ArrayList(itemDataArray);
+        allItemDataArray.AddRange(cookItemDataArray);
 
 
 
@@ -43,6 +52,40 @@ public class GameData : MonoBehaviour , ICookItemSozaiAcquisition
         {
             id2CookItem.Add(item.id, item);
         }
+
+
+
+    }
+
+    async Task Start()
+    {
+        foreach (Item item in allItemDataArray)
+        {
+            Debug.Log(item.id);
+            Task<Sprite> Image;
+
+            //handle = Addressables.LoadAssetAsync<Sprite>("Assets/050image/food_curryruce.png");
+            Image = fetchImage(item.imgFileName);
+
+            await Task.WhenAll(Image);
+            id2ItemImage.Add(item.id, Image.Result);
+        }
+    }
+
+
+
+
+    async Task<Sprite> fetchImage(string imgFileName)
+    {
+        AsyncOperationHandle<Sprite> handle;
+
+        handle = Addressables.LoadAssetAsync<Sprite>(imgFileName);
+
+        await handle.Task;
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+            Debug.Log("成功");
+
+        return handle.Result;
     }
 
     public Item getItem(string item_id)
