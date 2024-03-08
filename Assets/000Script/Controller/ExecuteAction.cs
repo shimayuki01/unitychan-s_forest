@@ -47,26 +47,10 @@ public class ExecuteAction : MonoBehaviour
 
     public void openBag()
     {
-
-        foreach (var i in _player.getBagSummary())
-        {
-            Debug.Log(i.Key + " " + i.Value);
-        }
-
+        // 今後executeAction.csは削除予定のため処理をここに集めている
         Dictionary<string, int> bagSummary = _player.getBagSummary();
-
         _baseMenuPanel.InstiatePanel(_bagPanel);
+        _bagContensRenderer.InitItemPanel(_baseMenuPanel._panelInstance);
         _bagContensRenderer.DisplayItems(_baseMenuPanel._panelInstance, bagSummary);
-
-        // ロード完了を待機する
-        GameObject itemPanelParent = _baseMenuPanel._panelInstance.transform.Find("ItemPanel").gameObject;
-        int idx = 0;
-
-        GameObject itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
-        Debug.Log(itemPanel.transform.Find("Image").gameObject);
-        Image panelText = itemPanel.transform.Find("Image").gameObject.GetComponent<Image>();
-        panelText.sprite = Instantiate(handle.Result);
-
-
     }
 }
