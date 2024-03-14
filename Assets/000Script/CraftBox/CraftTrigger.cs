@@ -32,6 +32,7 @@ public class CraftTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             isInCraftArea = false;
+            _actionButton.image.sprite = null;
             _actionButton.onClick.RemoveListener(OpenCraftPanel);
         }
     }
