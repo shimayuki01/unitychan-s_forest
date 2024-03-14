@@ -57,7 +57,14 @@ public class Bag : IItemConsumption
     //バッグのアイテムを減らす
     public void subItemQuantity(string id, int quantity)
     {
+        
         _summaryContents[id] -= quantity;
+
+        //アイテムの個数が0のとき、そのアイテムをバックに表示させないようにする
+        if(_summaryContents[id] == 0) 
+        {
+            _summaryContents.Remove(id);
+        }
     }
 
     public bool haveItem(string id)
