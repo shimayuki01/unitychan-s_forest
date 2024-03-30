@@ -7,8 +7,9 @@ using TNRD;
 public class RegisterAction : MonoBehaviour
 {
     [SerializeField] InputKey _inputKey;
-    [SerializeField] ExecuteAction _executeAction;
     public SerializableInterface<IPlayerAction> _player;
+    public SerializableInterface<IGameUI> _gameUI;
+    public SerializableInterface<IMenuUI> _menuUI;
 
     public DyanamicGameScene dyanamicGameScene;
     Dictionary<string, Dictionary<string, List<KeyCode>>> _state2Keyconfig = new Dictionary<string, Dictionary<string, List<KeyCode>>>();
@@ -30,12 +31,12 @@ public class RegisterAction : MonoBehaviour
                 // 接触ボタンのキーが入力された
                 if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
                 {
-                    _executeAction.action();
+                    _gameUI.Value.Contact();
                 }
 
                 if (_state2Keyconfig["Normal"]["OpenBag"].Contains(pressedKey))
                 {
-                    _executeAction.openBag();
+                    _gameUI.Value.OpenBag();
                 }
 
             }
@@ -47,7 +48,7 @@ public class RegisterAction : MonoBehaviour
                 // メニューを閉じるキーが入力された
                 if (_state2Keyconfig["Menu"]["ClosePanel"].Contains(pressedKey))
                 {
-                    _executeAction.closePanel();
+                    _menuUI.Value.ClosePanel();
                 }
 
             }

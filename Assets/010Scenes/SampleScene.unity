@@ -1660,7 +1660,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 958105571}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &292058701
 PrefabInstance:
@@ -3002,6 +3002,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
   m_PrefabInstance: {fileID: 718431807}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &730129588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 730129589}
+  - component: {fileID: 730129591}
+  - component: {fileID: 730129590}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &730129589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730129588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 958105571}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &730129590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730129588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b15bacb99dfab44a31910d9b896099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionButton: {fileID: 1244169815}
+  _bagPanel: {fileID: 3088147346802090527, guid: ae43abbf209d9c649a1b5b4e60759adf, type: 3}
+  _baseMenuPanel: {fileID: 1276301571}
+  _bagContensRenderer: {fileID: 1276301573}
+--- !u!114 &730129591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730129588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6241d38bb814f4581a7ebeaf138942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseMenuPanel: {fileID: 1276301571}
 --- !u!1 &748887314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3763,11 +3824,12 @@ Transform:
   m_LocalPosition: {x: -0.45858845, y: 4.559306, z: -0.000021219254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1575822816}
   - {fileID: 965608304}
   - {fileID: 288270427}
-  - {fileID: 1575822816}
   - {fileID: 2106867695}
   - {fileID: 1276301572}
+  - {fileID: 730129589}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3930,7 +3992,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 958105571}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1016701211
 PrefabInstance:
@@ -4933,6 +4995,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08796d9c6fcab914a946e43cf522eff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBag:
+    mode: 0
+    unityReference: {fileID: 28896485}
+    rawReference:
+      id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
 --- !u!1001 &1289000907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5902,7 +5973,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 958105571}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1607519045
 PrefabInstance:
@@ -7814,7 +7885,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputKey: {fileID: 965608303}
-  _executeAction: {fileID: 2106867697}
+  _player:
+    mode: 0
+    unityReference: {fileID: 28896485}
+    rawReference:
+      id: 0
+  _gameUI:
+    mode: 0
+    unityReference: {fileID: 730129590}
+    rawReference:
+      id: 0
+  _menuUI:
+    mode: 0
+    unityReference: {fileID: 730129591}
+    rawReference:
+      id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
 --- !u!114 &2106867697
 MonoBehaviour:
   m_ObjectHideFlags: 0

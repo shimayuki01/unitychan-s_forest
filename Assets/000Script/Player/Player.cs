@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class Player : MonoBehaviour, IPlayerAction
+public class Player : MonoBehaviour, IPlayerAction, IPlayerBagController
 {
     IOno _ono;
     [SerializeField] GameData gamedata;

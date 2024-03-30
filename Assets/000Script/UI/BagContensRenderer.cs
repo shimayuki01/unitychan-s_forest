@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TNRD;
 
 public class BagContensRenderer : MonoBehaviour
 {
+    public SerializableInterface<IPlayerBagController> playerBag;
+    public void OpenBagPanel(GameObject bagPanel)
+    {
+        InitItemPanel(bagPanel);
+        DisplayItems(bagPanel, playerBag.Value.getBagSummary());
+    }
     public void InitItemPanel(GameObject bagMenuePanel)
     {
         GameObject itemPanelParent = bagMenuePanel.transform.Find("ItemPanel").gameObject;

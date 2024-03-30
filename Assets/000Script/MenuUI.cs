@@ -1,0 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MenuUI : MonoBehaviour, IMenuUI
+{
+    [SerializeField] BaseMenuPanel _baseMenuPanel;
+    public void ClosePanel()
+    {
+        _baseMenuPanel.CloseButtonClicked();
+    }
+}
