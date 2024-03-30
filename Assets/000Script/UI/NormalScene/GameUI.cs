@@ -10,7 +10,6 @@ public class GameUI : MonoBehaviour, IGameUI
     [SerializeField] GameObject _bagPanel;
     [SerializeField] BaseMenuPanel _baseMenuPanel;
     [SerializeField] BagContensRenderer _bagContensRenderer;
-    //    Dictionary<string, int> bagSummary = _player.getBagSummary();
 
     public void Contact()
     {
@@ -18,7 +17,9 @@ public class GameUI : MonoBehaviour, IGameUI
     }
     public void OpenBag()
     {
-        _baseMenuPanel.InstiatePanel(_bagPanel);
-        _bagContensRenderer.OpenBagPanel(_baseMenuPanel._panelInstance);
+        // パネルの作成
+        GameObject _panelInstance = _baseMenuPanel.InstiatePanel(_bagPanel);
+        // パネルに現在所持しているアイテムを表示する
+        _bagContensRenderer.OpenBagPanel(_panelInstance);
     }
 }

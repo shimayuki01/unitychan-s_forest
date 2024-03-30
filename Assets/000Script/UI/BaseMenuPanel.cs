@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseMenuPanel : MonoBehaviour
+public class BaseMenuPanel : MonoBehaviour, IMenuUI
 {
 
     [SerializeField] RegisterAction _registerAction;
 
-    public GameObject _panelInstance;
+    private GameObject _panelInstance;
 
 
-    public void InstiatePanel(GameObject panel)
+    public GameObject InstiatePanel(GameObject panel)
     {
         if (_panelInstance == null)
         {
@@ -26,6 +26,7 @@ public class BaseMenuPanel : MonoBehaviour
             _registerAction.dyanamicGameScene.setCurrentScene(gameScene.MenueScene);
             Time.timeScale = 0f;
         }
+        return _panelInstance;
     }
     public void ClosePanel()
     {
@@ -38,7 +39,7 @@ public class BaseMenuPanel : MonoBehaviour
     }
 
     // パネルのクローズボタンを押したときの処理
-    public void CloseButtonClicked()
+    private void CloseButtonClicked()
     {
         ClosePanel();
     }
