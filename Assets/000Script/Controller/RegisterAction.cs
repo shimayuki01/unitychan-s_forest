@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-
+using TNRD;
 
 public class RegisterAction : MonoBehaviour
 {
     [SerializeField] InputKey _inputKey;
     [SerializeField] ExecuteAction _executeAction;
+    public SerializableInterface<IPlayerAction> _player;
 
     public DyanamicGameScene dyanamicGameScene;
     Dictionary<string, Dictionary<string, List<KeyCode>>> _state2Keyconfig = new Dictionary<string, Dictionary<string, List<KeyCode>>>();
@@ -17,7 +18,7 @@ public class RegisterAction : MonoBehaviour
         InitKeyconfig();
         dyanamicGameScene = new DyanamicGameScene();
 
-        _inputKey.OnDownWASD.Subscribe(walkVector => { _executeAction.Walk(walkVector);});
+        _inputKey.OnDownWASD.Subscribe(walkVector => { _player.Value.Walk(walkVector); });
 
 
         _inputKey.OnKeyDown.Subscribe(pressedKey =>
@@ -31,7 +32,7 @@ public class RegisterAction : MonoBehaviour
                 {
                     _executeAction.action();
                 }
-                
+
                 if (_state2Keyconfig["Normal"]["OpenBag"].Contains(pressedKey))
                 {
                     _executeAction.openBag();
@@ -54,19 +55,19 @@ public class RegisterAction : MonoBehaviour
 
 
     }
-                
-    
+
+
 
     void InitKeyconfig()
     {
         //_stete2keyconfigに追加するための辞書
         Dictionary<string, List<KeyCode>> _tempAppend = new Dictionary<string, List<KeyCode>>();
 
-        _tempAppend.Add( "Contact", new List<KeyCode>(){ KeyCode.F });
-        _tempAppend.Add( "OpenBag", new List<KeyCode>(){ KeyCode.B });
+        _tempAppend.Add("Contact", new List<KeyCode>() { KeyCode.F });
+        _tempAppend.Add("OpenBag", new List<KeyCode>() { KeyCode.B });
         _state2Keyconfig.Add("Normal", new Dictionary<string, List<KeyCode>>(_tempAppend));
 
-        
+
         _tempAppend.Clear();
         _tempAppend.Add("ClosePanel", new List<KeyCode>() { KeyCode.Escape });
         _state2Keyconfig.Add("Menu", new Dictionary<string, List<KeyCode>>(_tempAppend));
@@ -78,5 +79,5 @@ public class RegisterAction : MonoBehaviour
 
     }
 
-    
+
 }
