@@ -9,7 +9,9 @@ public class BagContensRenderer : MonoBehaviour
     public SerializableInterface<IPlayerBagController> playerBag;
     public void OpenBagPanel(GameObject bagPanel)
     {
+        // パネルに表示しているものを空にする
         InitItemPanel(bagPanel);
+        // パネルに現在表示しているアイテムを表示する
         DisplayItems(bagPanel, playerBag.Value.getBagSummary());
     }
     public void InitItemPanel(GameObject bagMenuePanel)
