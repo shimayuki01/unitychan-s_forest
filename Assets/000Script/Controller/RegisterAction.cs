@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-
+using TNRD;
 
 public class RegisterAction : MonoBehaviour
 {
     [SerializeField] InputKey _inputKey;
-    [SerializeField] ExecuteAction _executeAction;
+    public SerializableInterface<IPlayerAction> _player;
+    public SerializableInterface<IGameUI> _gameUI;
+    public SerializableInterface<IMenuUI> _menuUI;
 
     public DyanamicGameScene dyanamicGameScene;
     Dictionary<string, Dictionary<string, List<KeyCode>>> _state2Keyconfig = new Dictionary<string, Dictionary<string, List<KeyCode>>>();
@@ -17,7 +19,7 @@ public class RegisterAction : MonoBehaviour
         InitKeyconfig();
         dyanamicGameScene = new DyanamicGameScene();
 
-        _inputKey.OnDownWASD.Subscribe(walkVector => { _executeAction.Walk(walkVector);});
+        _inputKey.OnDownWASD.Subscribe(walkVector => { _player.Value.Walk(walkVector); });
 
 
         _inputKey.OnKeyDown.Subscribe(pressedKey =>
@@ -29,12 +31,12 @@ public class RegisterAction : MonoBehaviour
                 // 接触ボタンのキーが入力された
                 if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
                 {
-                    _executeAction.action();
+                    _gameUI.Value.Contact();
                 }
-                
+
                 if (_state2Keyconfig["Normal"]["OpenBag"].Contains(pressedKey))
                 {
-                    _executeAction.openBag();
+                    _gameUI.Value.OpenBag();
                 }
 
             }
@@ -46,7 +48,7 @@ public class RegisterAction : MonoBehaviour
                 // メニューを閉じるキーが入力された
                 if (_state2Keyconfig["Menu"]["ClosePanel"].Contains(pressedKey))
                 {
-                    _executeAction.closePanel();
+                    _menuUI.Value.ClosePanel();
                 }
 
             }
@@ -54,19 +56,19 @@ public class RegisterAction : MonoBehaviour
 
 
     }
-                
-    
+
+
 
     void InitKeyconfig()
     {
         //_stete2keyconfigに追加するための辞書
         Dictionary<string, List<KeyCode>> _tempAppend = new Dictionary<string, List<KeyCode>>();
 
-        _tempAppend.Add( "Contact", new List<KeyCode>(){ KeyCode.F });
-        _tempAppend.Add( "OpenBag", new List<KeyCode>(){ KeyCode.B });
+        _tempAppend.Add("Contact", new List<KeyCode>() { KeyCode.F });
+        _tempAppend.Add("OpenBag", new List<KeyCode>() { KeyCode.B });
         _state2Keyconfig.Add("Normal", new Dictionary<string, List<KeyCode>>(_tempAppend));
 
-        
+
         _tempAppend.Clear();
         _tempAppend.Add("ClosePanel", new List<KeyCode>() { KeyCode.Escape });
         _state2Keyconfig.Add("Menu", new Dictionary<string, List<KeyCode>>(_tempAppend));
@@ -78,5 +80,5 @@ public class RegisterAction : MonoBehaviour
 
     }
 
-    
+
 }
