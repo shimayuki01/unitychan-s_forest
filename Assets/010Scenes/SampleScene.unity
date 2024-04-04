@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 567104378249240564, guid: e8261a97a7f761c4e8efce96a79a4a28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7393062
+      value: -4.38
       objectReference: {fileID: 0}
     - target: {fileID: 567104378249240564, guid: e8261a97a7f761c4e8efce96a79a4a28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 288270427}
   - component: {fileID: 288270426}
   m_Layer: 0
-  m_Name: GameData
+  m_Name: GameItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3900,7 +3900,7 @@ GameObject:
   - component: {fileID: 965608303}
   - component: {fileID: 965608305}
   m_Layer: 0
-  m_Name: inputkey
+  m_Name: "\u30E6\u30FC\u30B6\u304B\u3089\u306E\u5165\u529B\u3068\u4ED5\u5206\u3051"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5385,7 +5385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 415077257fc3c7a40a6905bfa76381ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.93
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 415077257fc3c7a40a6905bfa76381ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5421,7 +5421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 415077257fc3c7a40a6905bfa76381ef, type: 3}
       propertyPath: m_Name
-      value: craftbox 1
+      value: CraftBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 415077257fc3c7a40a6905bfa76381ef, type: 3}
