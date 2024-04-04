@@ -4157,9 +4157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftButtonImage: {fileID: 21300000, guid: d63a96ec2c23a6e45a729f23606a8d88, type: 3}
   _actionButton: {fileID: 1244169815}
-  registerAction: {fileID: 0}
+  registerAction: {fileID: 965608305}
   _craftPanelPrefab: {fileID: 3088147346802090527, guid: cd794529e36f476499eee34111d235e3, type: 3}
-  _baseMenuPanel: {fileID: 1276301571}
+  _menuPanelManager: {fileID: 1276301571}
 --- !u!1 &1040824345
 GameObject:
   m_ObjectHideFlags: 3
@@ -4988,7 +4988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionButton: {fileID: 1244169815}
   _bagPanel: {fileID: 3088147346802090527, guid: ae43abbf209d9c649a1b5b4e60759adf, type: 3}
-  _baseMenuPanel: {fileID: 1276301571}
+  _menuPanelManager: {fileID: 1276301571}
   _bagContensRenderer: {fileID: 1276301573}
 --- !u!1001 &1289000907
 PrefabInstance:

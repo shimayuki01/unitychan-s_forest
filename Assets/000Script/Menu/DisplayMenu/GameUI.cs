@@ -8,7 +8,7 @@ public class GameUI : MonoBehaviour, IGameUI
     [SerializeField] Button _actionButton;
 
     [SerializeField] GameObject _bagPanel;
-    [SerializeField] BaseMenuPanel _baseMenuPanel;
+    [SerializeField] MenuPanelManager _menuPanelManager;
     [SerializeField] BagContensRenderer _bagContensRenderer;
 
     public void Contact()
@@ -18,7 +18,7 @@ public class GameUI : MonoBehaviour, IGameUI
     public void OpenBag()
     {
         // パネルの作成
-        GameObject _panelInstance = _baseMenuPanel.InstiatePanel(_bagPanel);
+        GameObject _panelInstance = _menuPanelManager.InstiatePanel(_bagPanel);
         // パネルに現在所持しているアイテムを表示する
         _bagContensRenderer.OpenBagPanel(_panelInstance);
     }

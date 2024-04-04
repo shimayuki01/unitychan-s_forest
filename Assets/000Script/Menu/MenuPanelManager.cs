@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseMenuPanel : MonoBehaviour, IMenuUI
+public class MenuPanelManager : MonoBehaviour, IMenuUI
 {
 
     [SerializeField] RegisterAction _registerAction;

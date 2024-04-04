@@ -12,7 +12,7 @@ public class CraftTrigger : MonoBehaviour
     [SerializeField] Button _actionButton;
     [SerializeField] RegisterAction registerAction;
     [SerializeField] GameObject _craftPanelPrefab;
-    [SerializeField] BaseMenuPanel _baseMenuPanel;
+    [SerializeField] MenuPanelManager _menuPanelManager;
 
     //public GameObject _craftPanelInstance;
 
@@ -40,7 +40,7 @@ public class CraftTrigger : MonoBehaviour
 
     void OpenCraftPanel()
     {
-        _baseMenuPanel.InstiatePanel(_craftPanelPrefab);
+        _menuPanelManager.InstiatePanel(_craftPanelPrefab);
     }
 
 }
