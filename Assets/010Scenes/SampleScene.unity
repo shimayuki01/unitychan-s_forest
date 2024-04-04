@@ -3950,7 +3950,7 @@ MonoBehaviour:
     unityReference: {fileID: 28896485}
     rawReference:
       id: 0
-  _gameUI:
+  _manuPanelActivator:
     mode: 0
     unityReference: {fileID: 1276301574}
     rawReference:

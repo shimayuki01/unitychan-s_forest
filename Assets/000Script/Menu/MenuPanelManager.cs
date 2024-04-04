@@ -8,15 +8,15 @@ public class MenuPanelManager : MonoBehaviour, IMenuUI
 
     [SerializeField] RegisterAction _registerAction;
 
-    private GameObject _panelInstance;
+    private GameObject _manuPanelInstance;
 
 
-    public GameObject InstiatePanel(GameObject panel)
+    public GameObject InstiateManuPanel(GameObject panel)
     {
-        if (_panelInstance == null)
+        if (_manuPanelInstance == null)
         {
             //Debug.Log("open panel");
-            _panelInstance = Instantiate(panel);
+            _manuPanelInstance = Instantiate(panel);
 
             // TODO:簡潔に書く
             // クラフトパネルの閉じるボタンにClosePanel()の処理を加える。
@@ -26,13 +26,13 @@ public class MenuPanelManager : MonoBehaviour, IMenuUI
             _registerAction.dyanamicGameScene.setCurrentScene(gameScene.MenueScene);
             Time.timeScale = 0f;
         }
-        return _panelInstance;
+        return _manuPanelInstance;
     }
     public void ClosePanel()
     {
         // 大元のPanelUIを削除してパネル表示を消す   
         Time.timeScale = 1f;
-        Destroy(_panelInstance);
+        Destroy(_manuPanelInstance);
 
         // ゲームシーンをMenuSceneからNormalSceneに変更する
         _registerAction.dyanamicGameScene.setCurrentScene(gameScene.NormalScene);
@@ -47,7 +47,7 @@ public class MenuPanelManager : MonoBehaviour, IMenuUI
     private Button getCloseButton()
     {
 
-        return _panelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
+        return _manuPanelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
 
     }
 }

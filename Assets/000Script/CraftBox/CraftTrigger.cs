@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class CraftTrigger : MonoBehaviour
 {
-    private bool isInCraftArea = false;
     public Sprite craftButtonImage;
     [SerializeField] Button _actionButton;
     [SerializeField] RegisterAction registerAction;
@@ -20,7 +19,6 @@ public class CraftTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            isInCraftArea = true;
             _actionButton.gameObject.SetActive(true);
             _actionButton.image.sprite = craftButtonImage;
             _actionButton.onClick.AddListener(OpenCraftPanel);
@@ -31,7 +29,6 @@ public class CraftTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            isInCraftArea = false;
             _actionButton.image.sprite = null;
             _actionButton.onClick.RemoveListener(OpenCraftPanel);
         }
@@ -40,7 +37,7 @@ public class CraftTrigger : MonoBehaviour
 
     void OpenCraftPanel()
     {
-        _menuPanelManager.InstiatePanel(_craftPanelPrefab);
+        _menuPanelManager.InstiateManuPanel(_craftPanelPrefab);
     }
 
 }

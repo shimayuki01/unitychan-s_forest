@@ -11,7 +11,7 @@ public class BagContensRenderer : MonoBehaviour
     {
         // パネルに表示しているものを空にする
         InitItemPanel(bagPanel);
-        // パネルに現在表示しているアイテムを表示する
+        // パネルに現在取得しているアイテムを表示する
         DisplayItems(bagPanel, playerBag.Value.getBagSummary());
     }
     public void InitItemPanel(GameObject bagMenuePanel)

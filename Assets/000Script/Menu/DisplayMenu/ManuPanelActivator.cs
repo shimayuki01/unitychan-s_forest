@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameUI : MonoBehaviour, IGameUI
+public class ManuPanelActivator: MonoBehaviour, IManuPanelActivator
 {
     [SerializeField] Button _actionButton;
 
@@ -18,7 +18,7 @@ public class GameUI : MonoBehaviour, IGameUI
     public void OpenBag()
     {
         // パネルの作成
-        GameObject _panelInstance = _menuPanelManager.InstiatePanel(_bagPanel);
+        GameObject _panelInstance = _menuPanelManager.InstiateManuPanel(_bagPanel);
         // パネルに現在所持しているアイテムを表示する
         _bagContensRenderer.OpenBagPanel(_panelInstance);
     }

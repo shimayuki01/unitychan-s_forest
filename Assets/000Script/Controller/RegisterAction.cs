@@ -8,7 +8,7 @@ public class RegisterAction : MonoBehaviour
 {
     [SerializeField] InputKey _inputKey;
     public SerializableInterface<IPlayerAction> _player;
-    public SerializableInterface<IGameUI> _gameUI;
+    public SerializableInterface<IManuPanelActivator> _manuPanelActivator;
     public SerializableInterface<IMenuUI> _menuUI;
 
     public DyanamicGameScene dyanamicGameScene;
@@ -31,12 +31,12 @@ public class RegisterAction : MonoBehaviour
                 // 接触ボタンのキーが入力された
                 if (_state2Keyconfig["Normal"]["Contact"].Contains(pressedKey))
                 {
-                    _gameUI.Value.Contact();
+                    _manuPanelActivator.Value.Contact();
                 }
 
                 if (_state2Keyconfig["Normal"]["OpenBag"].Contains(pressedKey))
                 {
-                    _gameUI.Value.OpenBag();
+                    _manuPanelActivator.Value.OpenBag();
                 }
 
             }
