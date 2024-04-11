@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8549164685846305971}
   - component: {fileID: 8549164685846305996}
   m_Layer: 0
-  m_Name: craftbox 1
+  m_Name: CraftBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
