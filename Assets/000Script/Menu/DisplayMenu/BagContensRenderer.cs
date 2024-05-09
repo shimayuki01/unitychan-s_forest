@@ -7,6 +7,7 @@ using TNRD;
 public class BagContensRenderer : MonoBehaviour
 {
     public SerializableInterface<IPlayerBagController> playerBag;
+
     public void OpenBagPanel(GameObject bagPanel)
     {
         // パネルに表示しているものを空にする
@@ -36,9 +37,12 @@ public class BagContensRenderer : MonoBehaviour
             string item_id = item.Key;
             int item_num = item.Value;
 
+
             // パネルの取得
             GameObject itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
 
+            // パネルのスクリプトにitem_idを書き込む
+            itemPanel.GetComponent<BagItemPreview>().setItemId(item_id);
 
             // アイテム画像の表示
             Image panelImage = itemPanel.transform.Find("Image").gameObject.GetComponent<Image>();

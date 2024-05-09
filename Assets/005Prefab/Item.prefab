@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 970676609851323734}
   - component: {fileID: 537699057924061699}
+  - component: {fileID: 5632755058927769181}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -122,6 +123,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946944891461783641}
   m_CullTransparentMesh: 1
+--- !u!114 &5632755058927769181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946944891461783641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0aab1c27d2a8a34f8afa3ac2143b8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  b: {fileID: 4816144413320117183}
+  bagContensRenderer: {fileID: 0}
+  gameData: {fileID: 0}
 --- !u!1 &5377649067224732669
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,4 +336,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9163454615574618152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5632755058927769181}
+        m_TargetAssemblyTypeName: BagItemPreview, Assembly-CSharp
+        m_MethodName: OnClickItemPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
