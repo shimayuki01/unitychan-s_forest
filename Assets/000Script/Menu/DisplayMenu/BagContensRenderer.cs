@@ -34,20 +34,20 @@ public class BagContensRenderer : MonoBehaviour
         int idx = 0;
         foreach (var item in bagSummary)
         {
-            string item_id = item.Key;
+            string itemId = item.Key;
             int item_num = item.Value;
 
 
             // パネルの取得
             GameObject itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
 
-            // パネルのスクリプトにitem_idを書き込む
-            itemPanel.GetComponent<BagItemPreview>().setItemId(item_id);
+            // パネルのスクリプトにitemIdを書き込む
+            itemPanel.GetComponent<BagItemPreview>().setItemId(itemId);
 
             // アイテム画像の表示
             Image panelImage = itemPanel.transform.Find("Image").gameObject.GetComponent<Image>();
             // アイテム画像の取得
-            Sprite itemImage = GameData.instance.getItemImage(item_id);
+            Sprite itemImage = GameData.instance.getItemImage(itemId);
             panelImage.sprite = Instantiate(itemImage);
             // アイテムの透明度を255にして表示する
             panelImage.color = new Color(255, 255, 255, 255);

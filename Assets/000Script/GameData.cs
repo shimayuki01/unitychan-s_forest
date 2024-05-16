@@ -17,6 +17,8 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
     Dictionary<string, CookItem> id2CookItem;
     Dictionary<string, CookItem> cookItemName2item;
     Dictionary<string, Sprite> id2ItemImage;
+    Dictionary<string, Item> id2AllItem;
+
 
 
 
@@ -56,6 +58,8 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
         cookItemName2item = new Dictionary<string, CookItem>();
         id2CookItem = new Dictionary<string, CookItem>();
 
+        id2AllItem = new Dictionary<string, Item>();
+
         foreach (Item item in itemDataArray)
         {
             id2Item.Add(item.id, item);
@@ -68,6 +72,11 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
         foreach (CookItem item in cookItemDataArray)
         {
             id2CookItem.Add(item.id, item);
+        }
+
+        foreach (Item item in allItemDataArray)
+        {
+            id2AllItem.Add(item.id, item);
         }
 
 
@@ -92,23 +101,28 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
     }
 
 
-    public Item getItem(string item_id)
+    public Item getItem(string itemId)
     {
-        return id2Item[item_id];
+        return id2Item[itemId];
     }
-    public CookItem getRecipeFromName(string cookItem_name)
+    public Item getAllItem(string itemId)
     {
-        return cookItemName2item[cookItem_name];
-    }
-
-    public CookItem getRecipe(string cookItem_id)
-    {
-        return id2CookItem[cookItem_id];
+        return id2AllItem[itemId];
     }
 
-    public Sozai[] getCookItemSozai(string cookItem_id)
+    public CookItem getRecipeFromName(string cookItemName)
     {
-        return id2CookItem[cookItem_id].sozai;
+        return cookItemName2item[cookItemName];
+    }
+
+    public CookItem getRecipe(string cookItemId)
+    {
+        return id2CookItem[cookItemId];
+    }
+
+    public Sozai[] getCookItemSozai(string cookItemId)
+    {
+        return id2CookItem[cookItemId].sozai;
     }
 
     public CookItem[] getCookItemDataArray()
@@ -116,8 +130,8 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
         return cookItemDataArray;
     }
 
-    public Sprite getItemImage(string item_id)
+    public Sprite getItemImage(string itemId)
     {
-        return id2ItemImage[item_id];
+        return id2ItemImage[itemId];
     }
 }
