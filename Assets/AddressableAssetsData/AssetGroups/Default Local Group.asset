@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4e52d63c61655824896e38d9df1fada9
   m_SerializeEntries:
-  - m_GUID: dabc6ac9f03111d449ed0c95eb79b51f
-    m_Address: Assets/005Prefab/Cube.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 5bdba46397da9b941979b3dfbbdca549
     m_Address: Assets/050image/food_curryruce.png
     m_ReadOnly: 0
