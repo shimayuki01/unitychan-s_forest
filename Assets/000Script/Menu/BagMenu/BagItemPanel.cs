@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BagItemPreview : MonoBehaviour
+public class BagItemPanel : MonoBehaviour
 {
     string itemId = null;
 
