@@ -9,7 +9,6 @@ public class CraftTrigger : MonoBehaviour
 {
     public Sprite craftButtonImage;
     [SerializeField] Button _actionButton;
-    [SerializeField] RegisterAction registerAction;
     [SerializeField] GameObject _craftPanelPrefab;
     [SerializeField] MenuPanelManager _menuPanelManager;
 
@@ -29,6 +28,7 @@ public class CraftTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            _actionButton.gameObject.SetActive(false);
             _actionButton.image.sprite = null;
             _actionButton.onClick.RemoveListener(OpenCraftPanel);
         }
