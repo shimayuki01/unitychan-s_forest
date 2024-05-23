@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IPlayerAction, IPlayerBagController
         _manager = new PlayerManager(gamedata);
         playerMove = GetComponent<Walk>();
     }
-    public void inItem(string id, int quantity)
+    public void inItem(string id, int quantity = 1)
     {
         _manager.pickUpItem(id, quantity);
     }

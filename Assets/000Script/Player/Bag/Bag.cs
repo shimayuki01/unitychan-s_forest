@@ -36,10 +36,10 @@ public class Bag : IItemConsumption
     //バッグの中に物を入れる（ものを拾う）
     public void inItem(string id, int quantity)
     {
-        if (!canIn(id)) 
+        if (!canIn(id))
         {
             //入れなかったらメッセージを入れる関数の作成
-            return; 
+            return;
         }
 
         if (_summaryContents.ContainsKey(id))
@@ -57,11 +57,11 @@ public class Bag : IItemConsumption
     //バッグのアイテムを減らす
     public void subItemQuantity(string id, int quantity)
     {
-        
+
         _summaryContents[id] -= quantity;
 
         //アイテムの個数が0のとき、そのアイテムをバックに表示させないようにする
-        if(_summaryContents[id] == 0) 
+        if (_summaryContents[id] == 0)
         {
             _summaryContents.Remove(id);
         }
@@ -84,9 +84,9 @@ public class Bag : IItemConsumption
     public List<string> createInItemArgumentList()
     {
         List<string> InItemArgumentList = new List<string>();
-        foreach(Block block in _blockContents)
+        foreach (Block block in _blockContents)
         {
-            if(block.getQuantity() < block.getBLOCK_MAX())
+            if (block.getQuantity() < block.getBLOCK_MAX())
             {
                 InItemArgumentList.Add(block.getItemId());
             }
@@ -100,7 +100,7 @@ public class Bag : IItemConsumption
     void summaryToBlock()
     {
         Array.Clear(_blockContents, 0, _blockContents.Length); //配列の初期化
-                                                               
+
         int index = 0;
         foreach (KeyValuePair<String, int> it in _summaryContents)
         {
@@ -140,7 +140,7 @@ public class Block
     int _quantity;
     static int BLOCK_MAX = 10;//一ブロックの最大の値
 
-    public Block(String id, int num )
+    public Block(String id, int num)
     {
         this._itemId = id;
         this._quantity = num;

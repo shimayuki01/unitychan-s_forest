@@ -5,15 +5,24 @@ using UnityEngine.UI;
 
 public class FieldObject : MonoBehaviour
 {
-    public Sprite _buttonImage;
-    [SerializeField] Button _actionButton;
+
+    [SerializeField] Button _contactButton;
+    public string _itemId;
+    private Sprite _buttonImage;
+
+    private void Start()
+    {
+        _buttonImage = GameData.instance.getItemImage(_itemId);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            _actionButton.gameObject.SetActive(true);
-            _actionButton.image.sprite = _buttonImage;
-            // _actionButton.onClick.AddListener();
+            _contactButton.gameObject.SetActive(true);
+            _buttonImage = GameData.instance.getItemImage(_itemId);
+            _contactButton.image.sprite = _buttonImage;
+            _contactButton.onClick.AddListener(() => pickUpItem(other.gameObject.GetComponent<Player>()));
         }
     }
 
@@ -21,9 +30,19 @@ public class FieldObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            _actionButton.gameObject.SetActive(false);
-            _actionButton.image.sprite = null;
-            // _actionButton.onClick.RemoveListener();
+            _contactButton.gameObject.SetActive(false);
+            _contactButton.image.sprite = null;
+            _contactButton.onClick.RemoveAllListeners();
         }
+    }
+
+
+    void pickUpItem(Player player)
+    {
+        player.inItem(_itemId);
+        Destroy(gameObject);
+        _contactButton.gameObject.SetActive(false);
+        _contactButton.image.sprite = null;
+        _contactButton.onClick.RemoveAllListeners();
     }
 }
