@@ -37,6 +37,14 @@ MonoBehaviour:
     m_Address: Assets/050image/fruit_apple.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 89be70e6fb6cfa341822ef96b84c65e9
+    m_Address: Assets/050image/herb.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: be2ec0e2db9ae6a4bb8d7dc3450b8624
+    m_Address: Assets/050image/mushroom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 96794b0bf1cdb6d488facde9212e58e7, type: 2}
   m_SchemaSet:

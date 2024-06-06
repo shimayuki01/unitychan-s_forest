@@ -3,21 +3,27 @@
     {
       "imgFileName": "Assets/050image/wood_maruta.png",
       "name": "木材",
-      "description" : "木を切ることで得られる",
+      "description" : "木を切ることで得られる。",
       "id" : "#000"
       
     },
     {
       "imgFileName": "Assets/050image/ishi_stone.png",
       "name": "石",
-      "description" : "拾うことで得られる",
+      "description" : "拾うことで得られる。ただの石。",
       "id" : "#001"
     },
     {
-      "imgFileName": "Assets/050image/fruit_apple.png",
-      "name": "リンゴ",
-      "description" : "拾うことで得られる",
+      "imgFileName": "Assets/050image/herb.png",
+      "name": "薬草",
+      "description" : "薬草。体力を回復する。10%で毒状態になる",
       "id" : "#002"
+    },
+    {
+      "imgFileName": "Assets/050image/mushroom.png",
+      "name": "キノコ",
+      "description" : "拾うことで得られる。食べれる。",
+      "id" : "#003"
     }
 
   ]

@@ -310,10 +310,10 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28896474}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.3
-  m_Height: 1
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.64
+  m_Height: 2.13
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &28896485
@@ -839,6 +839,7 @@ GameObject:
   - component: {fileID: 184220328}
   - component: {fileID: 184220327}
   - component: {fileID: 184220326}
+  - component: {fileID: 184220333}
   m_Layer: 0
   m_Name: "\u6728"
   m_TagString: Untagged
@@ -871,8 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4f9c771b1f38644bda12693b305d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contactButton: {fileID: 1244169815}
-  _itemId: '#000'
+  contactButton: {fileID: 0}
+  itemId: 
 --- !u!54 &184220328
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -965,6 +966,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &184220333
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184220325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &197797660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,6 +1785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288270427}
   - component: {fileID: 288270426}
+  - component: {fileID: 288270428}
   m_Layer: 0
   m_Name: GameItemInfo
   m_TagString: Untagged
@@ -1803,6 +1819,23 @@ Transform:
   m_Father: {fileID: 958105571}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &288270428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288270425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f903ea8d04e35498e063d3ffa020a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactButton: {fileID: 1244169815}
+  stone1: {fileID: 4385080170328260021, guid: ff62b58c5a9ea164fa8ddf8038e10cd1, type: 3}
+  itemId: '#003'
+  stone2: {fileID: 5440707293445505367, guid: 494f6d43e170e9145bc7865d243ee00b, type: 3}
+  stone3: {fileID: 0}
 --- !u!1001 &292058701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3525,6 +3558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_03 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7929468731896022120, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
+      propertyPath: _contactButton
+      value: 
+      objectReference: {fileID: 1244169815}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
 --- !u!4 &797642724 stripped
@@ -5661,6 +5698,7 @@ GameObject:
   - component: {fileID: 1489166622}
   - component: {fileID: 1489166627}
   - component: {fileID: 1489166628}
+  - component: {fileID: 1489166629}
   m_Layer: 0
   m_Name: "\u77F3"
   m_TagString: Untagged
@@ -5772,8 +5810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4f9c771b1f38644bda12693b305d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contactButton: {fileID: 1244169815}
-  _itemId: '#001'
+  contactButton: {fileID: 0}
+  itemId: 
 --- !u!65 &1489166628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5787,6 +5825,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.02, y: 3.06, z: 3.31}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &1489166629
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489166621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1524485231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6276,6 +6328,7 @@ GameObject:
   - component: {fileID: 1605669761}
   - component: {fileID: 1605669760}
   - component: {fileID: 1605669759}
+  - component: {fileID: 1605669766}
   m_Layer: 0
   m_Name: "\u30AB\u30EC\u30FC"
   m_TagString: Untagged
@@ -6308,8 +6361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4f9c771b1f38644bda12693b305d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contactButton: {fileID: 1244169815}
-  _itemId: '#100'
+  contactButton: {fileID: 0}
+  itemId: 
 --- !u!54 &1605669761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6402,6 +6455,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1605669766
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605669758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1607519045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7820,6 +7887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_03 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7929468731896022120, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
+      propertyPath: _contactButton
+      value: 
+      objectReference: {fileID: 1244169815}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
 --- !u!4 &1965844790 stripped

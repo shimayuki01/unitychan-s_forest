@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(MeshCollider))]
 public class FieldObject : MonoBehaviour
 {
 
-    [SerializeField] Button _contactButton;
-    public string _itemId;
+    public Button contactButton;
+    public string itemId;
     private Sprite _buttonImage;
 
     private void Start()
     {
-        _buttonImage = GameData.instance.getItemImage(_itemId);
+        _buttonImage = GameData.instance.getItemImage(itemId);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            _contactButton.gameObject.SetActive(true);
-            _buttonImage = GameData.instance.getItemImage(_itemId);
-            _contactButton.image.sprite = _buttonImage;
-            _contactButton.onClick.AddListener(() => pickUpItem(other.gameObject.GetComponent<Player>()));
+            contactButton.gameObject.SetActive(true);
+            _buttonImage = GameData.instance.getItemImage(itemId);
+            contactButton.image.sprite = _buttonImage;
+            contactButton.onClick.AddListener(() => pickUpItem(other.gameObject.GetComponent<Player>()));
         }
     }
 
@@ -30,19 +31,19 @@ public class FieldObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            _contactButton.gameObject.SetActive(false);
-            _contactButton.image.sprite = null;
-            _contactButton.onClick.RemoveAllListeners();
+            contactButton.gameObject.SetActive(false);
+            contactButton.image.sprite = null;
+            contactButton.onClick.RemoveAllListeners();
         }
     }
 
 
     void pickUpItem(Player player)
     {
-        player.inItem(_itemId);
+        player.inItem(itemId);
         Destroy(gameObject);
-        _contactButton.gameObject.SetActive(false);
-        _contactButton.image.sprite = null;
-        _contactButton.onClick.RemoveAllListeners();
+        contactButton.gameObject.SetActive(false);
+        contactButton.image.sprite = null;
+        contactButton.onClick.RemoveAllListeners();
     }
 }

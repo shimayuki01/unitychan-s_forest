@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4f9c771b1f38644bda12693b305d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contactButton: {fileID: 0}
-  _itemId: '#000'
+  contactButton: {fileID: 0}
+  itemId: '#001'
