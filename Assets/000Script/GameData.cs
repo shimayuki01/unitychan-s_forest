@@ -24,7 +24,7 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
 
 
     // Start is called before the first frame update
-    void Awake()
+    async void Awake()
     {
         // ƒVƒ“ƒOƒ‹ƒgƒ“‚ÌŽô•¶
         if (instance == null)
@@ -79,13 +79,6 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
             id2AllItem.Add(item.id, item);
         }
 
-
-
-    }
-
-
-    async void Start()
-    {
         id2ItemImage = new Dictionary<string, Sprite>();
 
 

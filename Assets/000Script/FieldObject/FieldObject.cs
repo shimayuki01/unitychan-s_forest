@@ -9,20 +9,18 @@ public class FieldObject : MonoBehaviour
 
     public Button contactButton;
     public string itemId;
-    private Sprite _buttonImage;
-
-    private void Start()
-    {
-        _buttonImage = GameData.instance.getItemImage(itemId);
-    }
+    private Sprite _fieldObjectImage;
 
     void OnTriggerEnter(Collider other)
     {
+        if (!_fieldObjectImage)
+        {
+            _fieldObjectImage = GameData.instance.getItemImage(itemId);
+        }
         if (other.tag == "Player")
         {
             contactButton.gameObject.SetActive(true);
-            _buttonImage = GameData.instance.getItemImage(itemId);
-            contactButton.image.sprite = _buttonImage;
+            contactButton.image.sprite = _fieldObjectImage;
             contactButton.onClick.AddListener(() => pickUpItem(other.gameObject.GetComponent<Player>()));
         }
     }
