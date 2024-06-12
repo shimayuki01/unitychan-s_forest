@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 4385080170330252149}
   - component: {fileID: 4729065021270817612}
   - component: {fileID: 2996178138807688076}
-  - component: {fileID: -412147053370192468}
-  - component: {fileID: 235371068422875615}
   m_Layer: 0
   m_Name: Mushroom_01
   m_TagString: Untagged
@@ -113,31 +111,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contactButton: {fileID: 0}
   itemId: '#003'
---- !u!114 &-412147053370192468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385080170328260021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4f9c771b1f38644bda12693b305d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contactButton: {fileID: 0}
-  itemId: 
---- !u!114 &235371068422875615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385080170328260021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4f9c771b1f38644bda12693b305d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contactButton: {fileID: 0}
-  itemId: 
