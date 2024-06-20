@@ -7,21 +7,22 @@ using UnityEngine.UI;
 public class FieldObject : MonoBehaviour
 {
 
-    public Button contactButton;
     public string itemId;
-    private Sprite _fieldObjectImage;
+    public Sprite fieldObjectImage;
 
     void OnTriggerEnter(Collider other)
     {
-        if (!_fieldObjectImage)
+        //アイテム画像を取得
+        if (!fieldObjectImage)
         {
-            _fieldObjectImage = GameData.instance.getItemImage(itemId);
+            fieldObjectImage = GameData.instance.getItemImage(itemId);
         }
+
+        //コンタクトボタンの更新
         if (other.tag == "Player")
         {
-            contactButton.gameObject.SetActive(true);
-            contactButton.image.sprite = _fieldObjectImage;
-            contactButton.onClick.AddListener(() => pickUpItem(other.gameObject.GetComponent<Player>()));
+            Debug.Log("リストに追加" +gameObject.name);
+            FieldObjectPickupManager.instance.UpdateContactButton(gameObject, other.gameObject.GetComponent<Player>(), true);
         }
     }
 
@@ -29,19 +30,19 @@ public class FieldObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            contactButton.gameObject.SetActive(false);
-            contactButton.image.sprite = null;
-            contactButton.onClick.RemoveAllListeners();
+            Debug.Log("リストから削除" + gameObject.name);
+
+            FieldObjectPickupManager.instance.UpdateContactButton(gameObject, other.gameObject.GetComponent<Player>(), false);
         }
     }
 
 
-    void pickUpItem(Player player)
+    public void pickUpItem(Player player)
     {
+        Debug.Log("リストから削除" + gameObject.name);
         player.inItem(itemId);
+        FieldObjectPickupManager.instance.UpdateContactButton(gameObject, player, false);
         Destroy(gameObject);
-        contactButton.gameObject.SetActive(false);
-        contactButton.image.sprite = null;
-        contactButton.onClick.RemoveAllListeners();
+
     }
 }
