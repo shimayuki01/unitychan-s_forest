@@ -4699,24 +4699,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 108507113624698413, guid: eebb56c82efbd8d4bb0eb6bd925a0e9d, type: 3}
   m_PrefabInstance: {fileID: 1198294670}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1205775569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
-  m_PrefabInstance: {fileID: 1627346318}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1205775574
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205775569}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.24, z: 0.43}
-  m_Center: {x: -0.03, y: 0.01177339, z: 0.0016698836}
 --- !u!1001 &1209540357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6003,16 +5985,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7170401898399361140, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7929468731896022120, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: contactButton
       value: 
       objectReference: {fileID: 1244169815}
     m_RemovedComponents:
-    - {fileID: 7170401898399361140, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
 --- !u!4 &1553162981 stripped
 Transform:
@@ -6317,7 +6295,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1244169815}
     m_RemovedComponents:
-    - {fileID: 7170401898399361140, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
 --- !u!4 &1627346319 stripped
 Transform:
