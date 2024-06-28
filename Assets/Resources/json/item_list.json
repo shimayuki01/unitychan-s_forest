@@ -24,7 +24,41 @@
       "name": "キノコ",
       "description" : "拾うことで得られる。食べれる。",
       "id" : "#003"
+    },
+    {
+      "imgFileName": "Assets/050image/apple.png",
+      "name": "リンゴ",
+      "description" : "拾うことで得られる。食べれる。",
+      "id" : "#004"
+    },
+    {
+      "imgFileName": "Assets/050image/potato.png",
+      "name": "ジャガイモ",
+      "description" : "拾うことで得られる。食べれる。",
+      "id" : "#005"
+    },
+    {
+      "imgFileName": "Assets/050image/carrot.png",
+      "name": "人参",
+      "description" : "拾うことで得られる。食べれる。",
+      "id" : "#006"
+    },
+    {
+      "imgFileName": "Assets/050image/egg.png",
+      "name": "たまご",
+      "description" : "拾うことで得られる。食べれる。",
+      "id" : "#007"
+    },
+    {
+      "imgFileName": "Assets/050image/wheat.png",
+      "name": "小麦",
+      "description" : "拾うことで得られる。生では食べれない。",
+      "id" : "#008"
     }
+
+    
+    
+    
 
   ]
 }

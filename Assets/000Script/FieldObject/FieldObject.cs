@@ -21,7 +21,6 @@ public class FieldObject : MonoBehaviour
         //コンタクトボタンの更新
         if (other.tag == "Player")
         {
-            Debug.Log("リストに追加" +gameObject.name);
             FieldObjectPickupManager.instance.UpdateContactButton(gameObject, other.gameObject.GetComponent<Player>(), true);
         }
     }
@@ -30,8 +29,6 @@ public class FieldObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("リストから削除" + gameObject.name);
-
             FieldObjectPickupManager.instance.UpdateContactButton(gameObject, other.gameObject.GetComponent<Player>(), false);
         }
     }
@@ -39,7 +36,6 @@ public class FieldObject : MonoBehaviour
 
     public void pickUpItem(Player player)
     {
-        Debug.Log("リストから削除" + gameObject.name);
         player.inItem(itemId);
         FieldObjectPickupManager.instance.UpdateContactButton(gameObject, player, false);
         Destroy(gameObject);

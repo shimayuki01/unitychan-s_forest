@@ -50,4 +50,9 @@ public class MenuPanelManager : MonoBehaviour, IMenuUI
         return _manuPanelInstance.transform.Find("CloseButton").gameObject.GetComponent<Button>();
 
     }
+
+    public GameObject getManuPanelInstance()
+    {
+        return _manuPanelInstance;
+    }
 }

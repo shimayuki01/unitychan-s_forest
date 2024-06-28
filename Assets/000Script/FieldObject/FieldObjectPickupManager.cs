@@ -69,12 +69,6 @@ public class FieldObjectPickupManager : MonoBehaviour
         {
             pickupItemList.Remove(contactItem);
         }
-        Debug.Log("ƒAƒCƒeƒ€ˆê——");
-        foreach(GameObject game in pickupItemList)
-        {
-            Debug.Log("--"+game.name);
-        }
-        Debug.Log("=======================");
 
         if (pickupItemList.Count > 0)
         {
