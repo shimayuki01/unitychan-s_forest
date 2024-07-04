@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BagItemPanel : MonoBehaviour
+public class CookItemPanel : MonoBehaviour
 {
     string itemId = null;
 
-    //[SerializeField] ItemPreview _sip;
     public void OnClickItemPanel()
     {
 
@@ -15,7 +14,7 @@ public class BagItemPanel : MonoBehaviour
             Debug.Log("大きい画面に表示するアイテムはありません。");
             return;
         }
-        BagItemPreview.instance.ShowSelectedItem(itemId);
+        CookItemPreview.instance.ShowSelectedItem(itemId);
         Debug.Log("クリックしたアイテム番号：" + itemId);
     }
 

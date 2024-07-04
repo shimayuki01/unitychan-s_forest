@@ -46,7 +46,7 @@ public class RecipeRenderer : MonoBehaviour
             GameObject itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
 
             // パネルのスクリプトにitemIdを書き込む
-            itemPanel.GetComponent<BagItemPanel>().setItemId(itemId);
+            itemPanel.GetComponent<CookItemPanel>().setItemId(itemId);
 
             // アイテム画像の表示
             Image panelImage = itemPanel.transform.Find("Image").gameObject.GetComponent<Image>();

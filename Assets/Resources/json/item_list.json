@@ -16,7 +16,7 @@
     {
       "imgFileName": "Assets/050image/herb.png",
       "name": "薬草",
-      "description" : "薬草。体力を回復する。10%で毒状態になる",
+      "description" : "薬草。体力を回復する。10%で毒状態になる。",
       "id" : "#002"
     },
     {
