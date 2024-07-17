@@ -11,13 +11,13 @@ public class RecipeRenderer : MonoBehaviour
         _recipeArray = GameData.instance.getCookItemDataArray();
     }
 
-    public void OpenCookMenu(GameObject cookPanel)
+    public void OpenCookMenu(GameObject cookPanel, Player player)
     {
         Debug.Log("Open Cook Menu");
         // パネルに表示しているものを空にする
         InitItemPanel(cookPanel);
         // パネルに現在作成できる料理を表示する
-        DisplayItems(cookPanel, _recipeArray);
+        DisplayItems(cookPanel, _recipeArray, player);
     }
     public void InitItemPanel(GameObject cookPanel)
     {
@@ -31,7 +31,7 @@ public class RecipeRenderer : MonoBehaviour
         }
 
     }
-    public void DisplayItems(GameObject cookPanel, CookItem[] recipeArray)
+    public void DisplayItems(GameObject cookPanel, CookItem[] recipeArray, Player player)
     {
 
         GameObject itemPanelParent = cookPanel.transform.Find("ItemPanel").gameObject;
@@ -59,5 +59,9 @@ public class RecipeRenderer : MonoBehaviour
 
             idx++;
         }
+
+
+        // 作成ボタンにプレイヤーを持たせる。
+        CookExeButton.instance.player = player;
     }
 }

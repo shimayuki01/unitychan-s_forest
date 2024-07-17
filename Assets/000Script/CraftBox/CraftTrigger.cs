@@ -20,7 +20,8 @@ public class CraftTrigger : MonoBehaviour
         {
             _actionButton.gameObject.SetActive(true);
             _actionButton.image.sprite = craftButtonImage;
-            _actionButton.onClick.AddListener(OpenCraftPanel);
+            Player player = other.gameObject.GetComponent<Player>();
+            _actionButton.onClick.AddListener(() => OpenCraftPanel(player));
         }
     }
 
@@ -30,15 +31,16 @@ public class CraftTrigger : MonoBehaviour
         {
             _actionButton.gameObject.SetActive(false);
             _actionButton.image.sprite = null;
-            _actionButton.onClick.RemoveListener(OpenCraftPanel);
+            Player player = other.gameObject.GetComponent<Player>();
+            _actionButton.onClick.RemoveListener(() => OpenCraftPanel(player));
         }
     }
 
 
-    void OpenCraftPanel()
+    void OpenCraftPanel(Player player)
     {
         _menuPanelManager.InstiateManuPanel(_craftPanelPrefab);
-        gameObject.GetComponent<RecipeRenderer>().OpenCookMenu(_menuPanelManager.getManuPanelInstance());
+        gameObject.GetComponent<RecipeRenderer>().OpenCookMenu(_menuPanelManager.getManuPanelInstance(), player);
     }
 
 }

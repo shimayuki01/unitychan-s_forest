@@ -15,6 +15,7 @@ public class CookItemPanel : MonoBehaviour
             return;
         }
         CookItemPreview.instance.ShowSelectedItem(itemId);
+        CookExeButton.instance.itemId = itemId;
         Debug.Log("クリックしたアイテム番号：" + itemId);
     }
 
