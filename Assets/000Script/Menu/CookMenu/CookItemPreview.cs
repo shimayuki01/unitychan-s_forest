@@ -23,18 +23,13 @@ public class CookItemPreview : MonoBehaviour
         }
     }
 
-    public void ShowSelectedItem(string itemId)
+    public void CleanSozaiPreview()
     {
-        _itemPreview.ShowSelectedItem(itemId, gameObject);
-
-        SozaiPreview(itemId);
-    }
-
-    public void SozaiPreview(string cookItemId)
-    {
-
+        Text itemPreviewText = _itemPreview.GetComponentInChildren<Text>();
+        itemPreviewText.text = "";
         GameObject itemPanelParent = _itemPreview.transform.Find("SozaiPanels").gameObject;
-        Sozai[] _sozai = GameData.instance.getCookItemSozai(cookItemId);
+        
+
         //ëfçﬁÇÃâÊëúÇè¡Ç∑èàóù
         for (int i = 0; i < 6; i++)
         {
@@ -46,6 +41,24 @@ public class CookItemPreview : MonoBehaviour
             Text panelText = itemPanel.GetComponentInChildren<Text>();
             panelText.text = "";
         }
+    }
+
+    public void ShowSelectedItem(string itemId)
+    {
+        CleanSozaiPreview();
+
+        _itemPreview.ShowSelectedItem(itemId, gameObject);
+
+        SozaiPreview(itemId);
+    }
+
+    public void SozaiPreview(string cookItemId)
+    {
+
+        GameObject itemPanelParent = _itemPreview.transform.Find("SozaiPanels").gameObject;
+        Sozai[] _sozai = GameData.instance.getCookItemSozai(cookItemId);
+
+
 
         int idx = 0;
         foreach (var item in _sozai)
