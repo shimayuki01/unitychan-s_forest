@@ -40,7 +40,7 @@ public class CraftTrigger : MonoBehaviour
     void OpenCraftPanel(Player player)
     {
         _menuPanelManager.InstiateManuPanel(_craftPanelPrefab);
-        gameObject.GetComponent<RecipeRenderer>().OpenCookMenu(_menuPanelManager.getManuPanelInstance(), player);
+        gameObject.GetComponent<RecipeRenderer>().PasteRecipe(_menuPanelManager.getManuPanelInstance(), player);
     }
 
 }

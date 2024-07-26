@@ -11,13 +11,14 @@ public class RecipeRenderer : MonoBehaviour
         _recipeArray = GameData.instance.getCookItemDataArray();
     }
 
-    public void OpenCookMenu(GameObject cookPanel, Player player)
+    public void PasteRecipe(GameObject cookPanel, Player player)
     {
         Debug.Log("Open Cook Menu");
         // パネルに表示しているものを空にする
         InitItemPanel(cookPanel);
+        List<CookItem> cookableItemList = GenerateCookableItemList(player.getBagSummary());
         // パネルに現在作成できる料理を表示する
-        DisplayItems(cookPanel, _recipeArray, player);
+        DisplayItems(cookPanel, cookableItemList, player);
     }
     public void InitItemPanel(GameObject cookPanel)
     {
@@ -31,12 +32,13 @@ public class RecipeRenderer : MonoBehaviour
         }
 
     }
-    public void DisplayItems(GameObject cookPanel, CookItem[] recipeArray, Player player)
+    public void DisplayItems(GameObject cookPanel, List<CookItem> recipeArray, Player player)
     {
 
         GameObject itemPanelParent = cookPanel.transform.Find("ItemPanel").gameObject;
         int idx = 0;
         Debug.Log("レシピを表示！");
+
         foreach (CookItem recipe in recipeArray)
         {
             Debug.Log("レシピを表示:" + idx);
@@ -63,5 +65,48 @@ public class RecipeRenderer : MonoBehaviour
 
         // 作成ボタンにプレイヤーを持たせる。
         CookExeButton.instance.player = player;
+    }
+
+    // 作成可能な料理のリストを作成する
+    List<CookItem> GenerateCookableItemList(Dictionary<string, int> playerBagSummary)
+    {
+        List<CookItem> cookableItemList = new List<CookItem>();
+        foreach (CookItem recipe in _recipeArray)
+        {
+            bool cookable = true;
+            // 各素材の個数がバッグの中身より多いか判定する
+            foreach (Sozai need_sozai in recipe.sozai)
+            {
+                
+                if (!biggerQuantity(playerBagSummary, need_sozai.id, need_sozai.num))
+                {
+                    cookable = false;
+                }
+            }
+
+            // 料理可能なものをリストに追加する
+            if (cookable)
+            {
+                cookableItemList.Add(recipe);
+            }
+
+        }
+
+        return cookableItemList;
+    }
+
+    bool biggerQuantity(Dictionary<string, int> playerBagSummary, string id, int quantity)
+    {
+        bool retval = false;
+        if (playerBagSummary.ContainsKey(id))
+        {
+            if (playerBagSummary[id] >= quantity)
+            {
+                retval =  true;
+            }
+        }
+
+        return retval;
+
     }
 }
