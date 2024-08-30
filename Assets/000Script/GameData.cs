@@ -103,6 +103,11 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
         return id2AllItem[itemId];
     }
 
+    public string getId2AllItemName(string itemId)
+    {
+        return id2AllItem[itemId].name;
+    }
+
     public CookItem getRecipeFromName(string cookItemName)
     {
         return cookItemName2item[cookItemName];
@@ -127,4 +132,5 @@ public class GameData : MonoBehaviour, ICookItemSozaiAcquisition
     {
         return id2ItemImage[itemId];
     }
+
 }

@@ -11,6 +11,8 @@ public class FieldObjectPickupManager : MonoBehaviour
     //[SerializeField] Player player;
     public bool isItemListUpdate = true;
     public Button contactButton;
+    [SerializeField] GameObject selectPickupItemUI;
+    [SerializeField] Transform selectPickupItemUIList;
 
     void Start()
     {    
@@ -58,6 +60,23 @@ public class FieldObjectPickupManager : MonoBehaviour
         contactButton.onClick.AddListener(() => attachItem.pickUpItem(player));
     }
 
+    private void ShowSelectPickupItemUI()
+    {
+
+        // すべての子オブジェクトを取得
+        foreach (Transform n in selectPickupItemUIList)
+        {
+            GameObject.Destroy(n.gameObject);
+        }
+        foreach (GameObject item in pickupItemList)
+        {
+            string selectItemId = item.GetComponent<FieldObject>().itemId;
+            string selectItemName = GameData.instance.getId2AllItemName(selectItemId);
+            GameObject aa =  Instantiate(selectPickupItemUI, selectPickupItemUIList);
+            aa.GetComponentInChildren<Text>().text = selectItemName;
+        }
+    }
+
     public void UpdateContactButton(GameObject contactItem, Player player, bool isIncrease)
     {
 
@@ -75,12 +94,14 @@ public class FieldObjectPickupManager : MonoBehaviour
             PickUpNearItemFirst(player);
             GameObject _nearItem = pickupItemList[0];
             SetupContactButton(_nearItem.GetComponent<FieldObject>(), player);
+            ShowSelectPickupItemUI();
         }
         else
         {
             contactButton.gameObject.SetActive(false);
             contactButton.image.sprite = null;
             contactButton.onClick.RemoveAllListeners();
+            ShowSelectPickupItemUI();
         }
 
         
