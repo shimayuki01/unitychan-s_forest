@@ -2009,6 +2009,7 @@ RectTransform:
   - {fileID: 748887315}
   - {fileID: 2112181205}
   - {fileID: 1244169818}
+  - {fileID: 469840606}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2280,6 +2281,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 567104378249240564, guid: e8261a97a7f761c4e8efce96a79a4a28, type: 3}
   m_PrefabInstance: {fileID: 40395956}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &469840605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469840606}
+  m_Layer: 5
+  m_Name: SelectPickItemList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &469840606
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469840605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 331187807}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &473108165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3848,6 +3884,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isItemListUpdate: 1
   contactButton: {fileID: 1244169815}
+  selectPickupItemUI: {fileID: 897241903267362055, guid: 117230159cc3a464c94431fa98e6ef10, type: 3}
+  selectPickupItemUIList: {fileID: 469840606}
 --- !u!1 &958105570
 GameObject:
   m_ObjectHideFlags: 0
