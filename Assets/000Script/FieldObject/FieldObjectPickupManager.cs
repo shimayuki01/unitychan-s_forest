@@ -72,14 +72,19 @@ public class FieldObjectPickupManager : MonoBehaviour
         int pickupItemIdx = 0;
         foreach (GameObject item in pickupItemList)
         {
-            string selectItemId = item.GetComponent<FieldObject>().itemId;
-            string selectItemName = GameData.instance.getId2AllItemName(selectItemId);
-            Debug.Log("アイテムリスト親のポジション" + selectPickupItemUIList.position.x);
-            float x_pos = 1368.417f;
-            float y_pos = 544.6259f - pickupItemIdx * 120;
-            GameObject selectItemUI = Instantiate(selectPickupItemUI, new Vector3(x_pos, y_pos, 0), Quaternion.identity, selectPickupItemUIList);
-            selectItemUI.GetComponentInChildren<Text>().text = selectItemName;
-            pickupItemIdx++;
+            // 画面に入りきらないため、表示するUIを4つまでにする。
+            if (pickupItemIdx < 4)
+            {
+                string selectItemId = item.GetComponent<FieldObject>().itemId;
+                string selectItemName = GameData.instance.getId2AllItemName(selectItemId);
+                Debug.Log("アイテムリスト親のポジション" + selectPickupItemUIList.position.x);
+                float x_pos = 1370f;
+                float y_pos = 590f - pickupItemIdx * 120;
+                GameObject selectItemUI = Instantiate(selectPickupItemUI, new Vector3(x_pos, y_pos, 0), Quaternion.identity, selectPickupItemUIList);
+                selectItemUI.GetComponentInChildren<Text>().text = selectItemName;
+                pickupItemIdx++;
+            }
+
         }
     }
 
