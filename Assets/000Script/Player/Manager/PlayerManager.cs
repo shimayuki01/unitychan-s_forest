@@ -44,4 +44,6 @@ public class PlayerManager : IManager
     }
 
     public Dictionary<string, int> getBagSummary() { return _bag.getBagSummary(); }
+
+    public Dictionary<Item, int>Å@getUseItem() { return new Dictionary<Item, int> {}; }
 }

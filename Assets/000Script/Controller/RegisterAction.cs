@@ -39,6 +39,11 @@ public class RegisterAction : MonoBehaviour
                     _manuPanelActivator.Value.OpenBag();
                 }
 
+                if (_state2Keyconfig["Normal"]["UseItem"].Contains(pressedKey))
+                {
+                    _player.Value.UseItem();
+                }
+
             }
 
             // メニュー画面のキーコンフィグ
@@ -66,6 +71,7 @@ public class RegisterAction : MonoBehaviour
 
         _tempAppend.Add("Contact", new List<KeyCode>() { KeyCode.F });
         _tempAppend.Add("OpenBag", new List<KeyCode>() { KeyCode.B });
+        _tempAppend.Add("UseItem", new List<KeyCode>() { KeyCode.E });
         _state2Keyconfig.Add("Normal", new Dictionary<string, List<KeyCode>>(_tempAppend));
 
 

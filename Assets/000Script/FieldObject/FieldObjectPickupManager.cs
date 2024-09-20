@@ -77,7 +77,6 @@ public class FieldObjectPickupManager : MonoBehaviour
             {
                 string selectItemId = item.GetComponent<FieldObject>().itemId;
                 string selectItemName = GameData.instance.getId2AllItemName(selectItemId);
-                Debug.Log("アイテムリスト親のポジション" + selectPickupItemUIList.position.x);
                 float x_pos = 1370f;
                 float y_pos = 590f - pickupItemIdx * 120;
                 GameObject selectItemUI = Instantiate(selectPickupItemUI, new Vector3(x_pos, y_pos, 0), Quaternion.identity, selectPickupItemUIList);

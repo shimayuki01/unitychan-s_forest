@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IPlayerAction, IPlayerBagController
     [SerializeField] GameData gamedata;
     IManager _manager;
     [SerializeField] IPlayerMove playerMove;
+    
 
     // Ç–Ç∆Ç¬ëOÇÃwalkVectorÇï€ë∂Ç∑ÇÈÅB
     private bool beforeIsZero = false;
@@ -53,6 +54,18 @@ public class Player : MonoBehaviour, IPlayerAction, IPlayerBagController
         }
 
     }
+
+    public void UseItem()
+    {
+        
+    }
+
+    public string getUseItem()
+    {
+        return "";
+    }
+
+    public void setUseItem() { }
 
     public int getPlayerOnoLv() { return _ono.getLv(); }
 

@@ -13,7 +13,7 @@ public class BagContensRenderer : MonoBehaviour
         // パネルに表示しているものを空にする
         InitItemPanel(bagPanel);
         // パネルに現在取得しているアイテムを表示する
-        DisplayItems(bagPanel, playerBag.Value.getBagSummary());
+        DisplayItems(bagPanel);
     }
     public void InitItemPanel(GameObject bagMenuePanel)
     {
@@ -27,36 +27,56 @@ public class BagContensRenderer : MonoBehaviour
         }
 
     }
-    public void DisplayItems(GameObject bagMenuePanel, Dictionary<string, int> bagSummary)
+    public void DisplayItems(GameObject bagMenuePanel)
     {
-
+        Dictionary<string, int> bagSummary = playerBag.Value.getBagSummary();
         GameObject itemPanelParent = bagMenuePanel.transform.Find("ItemPanel").gameObject;
-        int idx = 0;
+
+        
+        //使用するアイテムを先頭に表示
+        string useItemId = playerBag.Value.getUseItem();
+        GameObject itemPanel;
+        //バックに入っていないuseItemIdを指定すると何も表示されなくなる(バグ)
+        if (useItemId != "")
+        {
+            // パネルの取得
+            itemPanel = itemPanelParent.transform.GetChild(0).gameObject;
+            DisplayOneItem(useItemId, bagSummary[useItemId], itemPanel);
+            bagSummary.Remove(useItemId);
+        }
+
+
+        int idx = 1;
+
         foreach (var item in bagSummary)
         {
             string itemId = item.Key;
-            int item_num = item.Value;
-
+            int itemNum = item.Value;
 
             // パネルの取得
-            GameObject itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
+            itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
 
-            // パネルのスクリプトにitemIdを書き込む
-            itemPanel.GetComponent<BagItemPanel>().setItemId(itemId);
+            DisplayOneItem(itemId, itemNum, itemPanel);
 
-            // アイテム画像の表示
-            Image panelImage = itemPanel.transform.Find("Image").gameObject.GetComponent<Image>();
-            // アイテム画像の取得
-            Sprite itemImage = GameData.instance.getItemImage(itemId);
-            panelImage.sprite = Instantiate(itemImage);
-            // アイテムの透明度を255にして表示する
-            panelImage.color = new Color(255, 255, 255, 255);
-
-            // アイテム個数の表示
-            Text panelText = itemPanel.GetComponentInChildren<Text>();
-            panelText.text = item_num.ToString();
-
-            idx++;
+           idx++;
         }
+    }
+
+    private void DisplayOneItem(string itemId, int itemNum, GameObject itemPanel)
+    {     
+        // パネルのスクリプトにitemIdを書き込む
+        itemPanel.GetComponent<BagItemPanel>().setItemId(itemId);
+
+        // アイテム画像の表示
+        Image panelImage = itemPanel.transform.Find("Image").gameObject.GetComponent<Image>();
+        // アイテム画像の取得
+        Sprite itemImage = GameData.instance.getItemImage(itemId);
+        panelImage.sprite = Instantiate(itemImage);
+        // アイテムの透明度を255にして表示する
+        panelImage.color = new Color(255, 255, 255, 255);
+
+        // アイテム個数の表示
+        Text panelText = itemPanel.GetComponentInChildren<Text>();
+        panelText.text = itemNum.ToString();
     }
 }

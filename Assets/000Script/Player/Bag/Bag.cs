@@ -8,8 +8,10 @@ public class Bag : IItemConsumption
     //_summaryContents<id,数>
     Dictionary<String, int> _summaryContents = new Dictionary<String, int>();
     int BLOCK_MAX = 10;
+    string useItem;
 
     delegate List<Item> getContents();
+
 
     //バックに入れられるか確認する関数の追加
     bool canIn(string itemId)
@@ -121,16 +123,26 @@ public class Bag : IItemConsumption
         }
     }
 
-    int getItemQuantity(string item_id)
+    int getItemQuantity(string itemId)
     {
 
-        if (!haveItem(item_id)) { return 0; }
+        if (!haveItem(itemId)) { return 0; }
 
-        return _summaryContents[item_id];
+        return _summaryContents[itemId];
     }
     public Dictionary<String, int> getBagSummary()
     {
         return _summaryContents;
+    }
+
+    public string getUseItem()
+    {
+        return useItem;
+    }
+
+    public void setUseItem(string itemId)
+    {
+        useItem = itemId;
     }
 }
 
