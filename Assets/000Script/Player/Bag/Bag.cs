@@ -8,7 +8,7 @@ public class Bag : IItemConsumption
     //_summaryContents<id,数>
     Dictionary<String, int> _summaryContents = new Dictionary<String, int>();
     int BLOCK_MAX = 10;
-    string useItem;
+
 
     delegate List<Item> getContents();
 
@@ -135,15 +135,6 @@ public class Bag : IItemConsumption
         return _summaryContents;
     }
 
-    public string getUseItem()
-    {
-        return useItem;
-    }
-
-    public void setUseItem(string itemId)
-    {
-        useItem = itemId;
-    }
 }
 
 public class Block

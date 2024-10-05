@@ -6,6 +6,9 @@ public class BagItemPreview : MonoBehaviour
 {
     public static BagItemPreview instance;
     [SerializeField] ItemPreview _itemPreview;
+    string _itemId = null;
+    string _useItemId = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +27,19 @@ public class BagItemPreview : MonoBehaviour
 
     public void ShowSelectedItem(string itemId)
     {
-        _itemPreview.ShowSelectedItem(itemId,gameObject);
+        this._itemId = itemId;
+        _itemPreview.ShowSelectedItem(itemId, gameObject);
     }
 
+    public string getUseItem()
+    {
+        return _useItemId;
+    }
+
+    public void changeUseItem()
+    {
+        _useItemId = _itemId;
+        Debug.Log(_useItemId + "を使用アイテムにセットしました");
+    }
 
 }
