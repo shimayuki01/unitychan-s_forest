@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 7741033255581313955}
   - component: {fileID: 794974544634266310}
   m_Layer: 5
-  m_Name: changeUseItemButton
+  m_Name: ChangeUseItemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

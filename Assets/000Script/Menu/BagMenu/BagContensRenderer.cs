@@ -17,6 +17,8 @@ public class BagContensRenderer : MonoBehaviour
         // パネルに現在取得しているアイテムを表示する
         DisplayItems(bagPanel);
 
+        passReOpenBagPanelFanction(bagPanel);
+
         currentBagPanel = bagPanel;
     }
 
@@ -28,7 +30,6 @@ public class BagContensRenderer : MonoBehaviour
         InitItemPanel(currentBagPanel);
         // パネルに現在取得しているアイテムを表示する
         DisplayItems(currentBagPanel);
-
     }
     public void InitItemPanel(GameObject bagMenuePanel)
     {
@@ -99,6 +100,16 @@ public class BagContensRenderer : MonoBehaviour
         // アイテム個数の表示
         Text panelText = itemPanel.GetComponentInChildren<Text>();
         panelText.text = itemNum.ToString();
+    }
+
+    private void passReOpenBagPanelFanction(GameObject bagPanel)
+    {
+        getChangeUseItemButton(bagPanel).onClick.AddListener(ReOpenBagPanel);
+    }
+
+    private Button getChangeUseItemButton(GameObject bagPanel)
+    {
+        return bagPanel.transform.Find("ChangeUseItemButton").gameObject.GetComponent<Button>();
     }
 
 }
