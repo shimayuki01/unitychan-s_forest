@@ -7,20 +7,19 @@ public class BagItemPreview : MonoBehaviour
     public static BagItemPreview instance;
     [SerializeField] ItemPreview _itemPreview;
     string _itemId = null;
-    string _useItemId = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        // ƒVƒ“ƒOƒ‹ƒgƒ“‚Ìô•¶
+        // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®å‘ªæ–‡
         if (instance == null)
         {
-            // ©g‚ğƒCƒ“ƒXƒ^ƒ“ƒX‚Æ‚·‚é
+            // è‡ªèº«ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ã™ã‚‹
             instance = this;
         }
         else
         {
-            // ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•¡”‘¶İ‚µ‚È‚¢‚æ‚¤‚ÉAŠù‚É‘¶İ‚µ‚Ä‚¢‚½‚ç©g‚ğÁ‹‚·‚é
+            // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¤‡æ•°å­˜åœ¨ã—ãªã„ã‚ˆã†ã«ã€æ—¢ã«å­˜åœ¨ã—ã¦ã„ãŸã‚‰è‡ªèº«ã‚’æ¶ˆå»ã™ã‚‹
             Destroy(gameObject);
         }
     }
@@ -31,15 +30,9 @@ public class BagItemPreview : MonoBehaviour
         _itemPreview.ShowSelectedItem(itemId, gameObject);
     }
 
-    public string getUseItem()
-    {
-        return _useItemId;
-    }
-
     public void changeUseItem()
     {
-        _useItemId = _itemId;
-        Debug.Log(_useItemId + "‚ğg—pƒAƒCƒeƒ€‚ÉƒZƒbƒg‚µ‚Ü‚µ‚½");
-    }
+        UseItem.instance.setUseItem(_itemId);
 
+    }
 }

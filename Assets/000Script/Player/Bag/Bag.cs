@@ -36,21 +36,26 @@ public class Bag : IItemConsumption
     }
 
     //バッグの中に物を入れる（ものを拾う）
-    public void inItem(string id, int quantity)
+    public void inItem(string itemId, int quantity)
     {
-        if (!canIn(id))
+        if (!canIn(itemId))
         {
             //入れなかったらメッセージを入れる関数の作成
             return;
         }
 
-        if (_summaryContents.ContainsKey(id))
+        if(UseItem.instance.getUseItem() == null )//&& _summaryContents.Count == 0)
         {
-            _summaryContents[id] += quantity;
+            UseItem.instance.setUseItem(itemId);
+        }
+
+        if (_summaryContents.ContainsKey(itemId))
+        {
+            _summaryContents[itemId] += quantity;
         }
         else
         {
-            _summaryContents.Add(id, quantity);
+            _summaryContents.Add(itemId, quantity);
         }
 
         summaryToBlock();

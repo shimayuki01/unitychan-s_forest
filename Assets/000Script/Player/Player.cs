@@ -60,12 +60,6 @@ public class Player : MonoBehaviour, IPlayerAction, IPlayerBagController
         
     }
 
-    public string getUseItem()
-    {
-        return "";
-    }
-
-    public void setUseItem() { }
 
     public int getPlayerOnoLv() { return _ono.getLv(); }
 

@@ -7,6 +7,8 @@ using TNRD;
 public class BagContensRenderer : MonoBehaviour
 {
     public SerializableInterface<IPlayerBagController> playerBag;
+    GameObject currentBagPanel;
+
 
     public void OpenBagPanel(GameObject bagPanel)
     {
@@ -14,6 +16,19 @@ public class BagContensRenderer : MonoBehaviour
         InitItemPanel(bagPanel);
         // パネルに現在取得しているアイテムを表示する
         DisplayItems(bagPanel);
+
+        currentBagPanel = bagPanel;
+    }
+
+    // 開いたbagpanelを再度開く
+    // useItemを切り替えたとき使用する
+    public void ReOpenBagPanel()
+    {
+        // パネルに表示しているものを空にする
+        InitItemPanel(currentBagPanel);
+        // パネルに現在取得しているアイテムを表示する
+        DisplayItems(currentBagPanel);
+
     }
     public void InitItemPanel(GameObject bagMenuePanel)
     {
@@ -34,15 +49,16 @@ public class BagContensRenderer : MonoBehaviour
 
         
         //使用するアイテムを先頭に表示
-        string useItemId = playerBag.Value.getUseItem();
+        string useItemId = UseItem.instance.getUseItem();
         GameObject itemPanel;
+
+        Debug.Log("useItem" + useItemId);
         //バックに入っていないuseItemIdを指定すると何も表示されなくなる(バグ)
-        if (useItemId != "")
+        if (useItemId != null)
         {
             // パネルの取得
             itemPanel = itemPanelParent.transform.GetChild(0).gameObject;
             DisplayOneItem(useItemId, bagSummary[useItemId], itemPanel);
-            bagSummary.Remove(useItemId);
         }
 
 
@@ -52,6 +68,11 @@ public class BagContensRenderer : MonoBehaviour
         {
             string itemId = item.Key;
             int itemNum = item.Value;
+
+            if(useItemId == item.Key)
+            {
+                continue;
+            }
 
             // パネルの取得
             itemPanel = itemPanelParent.transform.GetChild(idx).gameObject;
@@ -79,4 +100,5 @@ public class BagContensRenderer : MonoBehaviour
         Text panelText = itemPanel.GetComponentInChildren<Text>();
         panelText.text = itemNum.ToString();
     }
+
 }
