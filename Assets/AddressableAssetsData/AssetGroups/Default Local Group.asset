@@ -77,6 +77,10 @@ MonoBehaviour:
     m_Address: Assets/050image/fire_mushroom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d4d3687079c6378478323a6eb9d225d8
+    m_Address: Assets/050image/circle_brown.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 96794b0bf1cdb6d488facde9212e58e7, type: 2}
   m_SchemaSet:

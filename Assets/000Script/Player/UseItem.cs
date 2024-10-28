@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseItem : MonoBehaviour
 {
     public static UseItem instance;
     string _useItemId = null;
+    [SerializeField] GameObject useItemBackgroundPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +32,12 @@ public class UseItem : MonoBehaviour
     }
 
 
-    public void setUseItem(string itemId)
+    public void updateUseItem(string itemId)
     {
         _useItemId = itemId;
+        Sprite useItemImage = GameData.instance.getItemImage(itemId);
+        useItemBackgroundPanel.gameObject.GetComponent<Image>().sprite = useItemImage;
+        useItemBackgroundPanel.gameObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
         Debug.Log(_useItemId + "を使用アイテムにセットしました");
     }
 

@@ -44,9 +44,9 @@ public class Bag : IItemConsumption
             return;
         }
 
-        if(UseItem.instance.getUseItem() == null )//&& _summaryContents.Count == 0)
+        if (UseItem.instance.getUseItem() == null)//&& _summaryContents.Count == 0)
         {
-            UseItem.instance.setUseItem(itemId);
+            UseItem.instance.updateUseItem(itemId);
         }
 
         if (_summaryContents.ContainsKey(itemId))

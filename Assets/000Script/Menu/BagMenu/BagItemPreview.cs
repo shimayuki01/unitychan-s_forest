@@ -32,7 +32,7 @@ public class BagItemPreview : MonoBehaviour
 
     public void changeUseItem()
     {
-        UseItem.instance.setUseItem(_itemId);
+        UseItem.instance.updateUseItem(_itemId);
 
     }
 }
