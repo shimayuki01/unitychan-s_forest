@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class FieldObjectPickupManager : MonoBehaviour
 {
@@ -60,14 +61,18 @@ public class FieldObjectPickupManager : MonoBehaviour
         contactButton.onClick.AddListener(() => attachItem.pickUpItem(player));
     }
 
-    private void ShowSelectPickupItemUI()
+    private void clearSelectPickupItemUIList()
     {
-
         // すべての子オブジェクトを取得
         foreach (Transform n in selectPickupItemUIList)
         {
             GameObject.Destroy(n.gameObject);
         }
+    }
+
+    private void ShowSelectPickupItemUI(Player player)
+    {
+        clearSelectPickupItemUIList();
 
         int pickupItemIdx = 0;
         foreach (GameObject item in pickupItemList)
@@ -81,6 +86,14 @@ public class FieldObjectPickupManager : MonoBehaviour
                 float y_pos = 590f - pickupItemIdx * 120;
                 GameObject selectItemUI = Instantiate(selectPickupItemUI, new Vector3(x_pos, y_pos, 0), Quaternion.identity, selectPickupItemUIList);
                 selectItemUI.GetComponentInChildren<Text>().text = selectItemName;
+
+                // クリックしたらアイテムを取得するイベントをUIに登録する。
+                EventTrigger trigger = selectItemUI.GetComponent<EventTrigger>();
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerClick;
+                entry.callback.AddListener(_ => item.GetComponent<FieldObject>().pickUpItem(player));
+                trigger.triggers.Add(entry);
+
                 pickupItemIdx++;
             }
 
@@ -104,14 +117,14 @@ public class FieldObjectPickupManager : MonoBehaviour
             PickUpNearItemFirst(player);
             GameObject _nearItem = pickupItemList[0];
             SetupContactButton(_nearItem.GetComponent<FieldObject>(), player);
-            ShowSelectPickupItemUI();
+            ShowSelectPickupItemUI(player);
         }
         else
         {
             contactButton.gameObject.SetActive(false);
             contactButton.image.sprite = null;
             contactButton.onClick.RemoveAllListeners();
-            ShowSelectPickupItemUI();
+            clearSelectPickupItemUIList();
         }
 
 
