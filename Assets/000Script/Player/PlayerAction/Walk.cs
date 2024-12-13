@@ -63,11 +63,13 @@ public class Walk : MonoBehaviour, IPlayerMove
         if (walkVector.magnitude > 0)
         {
             anim.SetBool("walking", true);
+            anim.speed = 1.7f;
 
         }
         else
         {
             anim.SetBool("walking", false);
+            anim.speed = 1.0f;
         }
 
 
